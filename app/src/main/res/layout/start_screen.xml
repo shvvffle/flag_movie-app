@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Banner -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- App Menu -->
+
+    <!-- Search bar for movies -->
+    <EditText
+        android:layout_width="320dp"
+        android:hint="@string/search_bar"
+        android:id="@+id/all_screens_search_bar_input"
+        android:layout_height="50dp" />
+
+    <!-- Search button -->
+    <ImageView
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:id="@+id/all_screens_search_bar_button"
+        android:layout_toRightOf="@+id/all_screens_search_bar_input"
+        android:src="@drawable/movie_search" />
+
+    <!-- Get Latest Movies -->
+
+    <Button
+        android:id="@+id/start_screen_latest_movie_screen_button"
+        android:layout_width="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/button_latest_movies"
+        android:layout_height="50dp" />
+
+    <!-- Get Popular TV show -->
+
+    <Button
+        android:layout_below="@id/start_screen_latest_movie_screen_button"
+        android:id="@+id/start_screen_popular_tv_show_screen_button"
+        android:layout_width="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/button_popular_tv_show"
+        android:layout_height="50dp" />
+
+</RelativeLayout>

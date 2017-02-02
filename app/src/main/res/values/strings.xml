@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MoviesApp - Marina Marques</string>
+    <string name="search_bar">Search movie... </string>
+    <string name="language">en_US</string>
+    <string name="button_latest_movies">Get latest movies</string>
+    <string name="button_popular_tv_show">Get popular TV shows</string>
+</resources>
