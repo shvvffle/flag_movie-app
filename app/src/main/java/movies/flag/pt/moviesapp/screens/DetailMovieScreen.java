@@ -37,4 +37,5 @@ public class DetailMovieScreen extends Screen {
         detailMovieOverview.setText( movieOverview );
     }
 
+
 }
