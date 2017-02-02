@@ -41,7 +41,6 @@ public class SearchMovieScreen extends Screen {
                 DLog.d( tag, "onResponseSuccess " + movie );
                 // Here i can create the adapter :)
 
-
             }
 
             @Override
