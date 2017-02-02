@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.List;
 import movies.flag.pt.moviesapp.R;
 import movies.flag.pt.moviesapp.http.entities.Movie;
 import movies.flag.pt.moviesapp.screens.DetailMovieScreen;
+
 
 /**
  * Created by Marina on 26/01/2017.
@@ -51,12 +51,12 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
         holder.movieItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent movieDetailIntent = new Intent( ListMovieViewAdapter.this, DetailMovieScreen.class );
+                Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class );
                 String movieTitle = moviesList.getTitle();
                 String movieOverview = moviesList.getOverview();
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_TITLE, movieTitle);
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_OVERVIEW, movieOverview);
-                startActivity(movieDetailIntent);
+                getContext().startActivity(movieDetailIntent);
                 //holder.detailMovieCover.setImageBitmap( moviesList.getPosterPath() );
                 //holder.detailMovieTitle.setText( moviesList.getTitle() );
                // holder.detailMovieOverview.setText( moviesList.getOverview() );
@@ -70,11 +70,6 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
         //TextView detailMovieTitle;
         //TextView detailMovieOverview;
         //ImageView detailMovieCover;
-    }
-
-    private void startActivity(Class<?> activityClass) {
-        Class<?> intent = new Intent(ListMovieViewAdapter.this, DetailMovieScreen.class);
-        startActivity(intent);
     }
 
 

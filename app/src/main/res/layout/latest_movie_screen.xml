@@ -4,24 +4,12 @@
     android:layout_height="match_parent">
 
     <!-- Search bar for movies -->
-    <EditText
-        android:layout_width="340dp"
-        android:hint="@string/search_bar"
-        android:id="@+id/all_screens_search_bar_input"
-        android:layout_height="50dp" />
-
-    <!-- Search button -->
-    <ImageView
-        android:layout_height="50dp"
-        android:layout_width="50dp"
-        android:clickable="true"
-        android:id="@+id/all_screens_search_bar_button"
-        android:layout_toRightOf="@+id/all_screens_search_bar_input"
-        android:src="@drawable/movie_search" />
+    <include layout="@layout/search_bar_screen"
+        android:id="@+id/search_bar_menu"/>
 
 
     <ListView
-        android:layout_below="@id/all_screens_search_bar_input"
+        android:layout_below="@id/search_bar_menu"
         android:layout_width="wrap_content"
         android:id="@+id/latest_movie_screen_list_view"
         android:layout_height="wrap_content"></ListView>

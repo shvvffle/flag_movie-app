@@ -12,20 +12,9 @@
     <!-- App Menu -->
 
     <!-- Search bar for movies -->
-    <EditText
-        android:layout_width="320dp"
-        android:hint="@string/search_bar"
-        android:id="@+id/all_screens_search_bar_input"
-        android:layout_height="50dp" />
+    <include layout="@layout/search_bar_screen"
+        android:id="@+id/search_bar_menu"/>
 
-    <!-- Search button -->
-    <ImageView
-        android:layout_height="50dp"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:id="@+id/all_screens_search_bar_button"
-        android:layout_toRightOf="@+id/all_screens_search_bar_input"
-        android:src="@drawable/movie_search" />
 
     <!-- Get Latest Movies -->
 
