@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="movieTitle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="movieDescription">
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

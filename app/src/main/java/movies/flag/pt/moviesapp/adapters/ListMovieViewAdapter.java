@@ -39,9 +39,6 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
             v = LayoutInflater.from( getContext() ).inflate( R.layout.latest_movie_item, null );
             holder = new MovieHolder();
             holder.movieItem = (TextView) v.findViewById( R.id.latest_movie_item );
-            //holder.detailMovieCover = (ImageView) v.findViewById( R.id.detail_movie_screen_cover );
-            //holder.detailMovieTitle = (TextView) v.findViewById( R.id.detail_movie_screen_title );
-            //holder.detailMovieOverview = (TextView) v.findViewById( R.id.detail_movie_screen_overview );
             v.setTag( holder );
         } else {
             holder = (MovieHolder) v.getTag();
@@ -58,8 +55,6 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_OVERVIEW, movieOverview);
                 getContext().startActivity(movieDetailIntent);
                 //holder.detailMovieCover.setImageBitmap( moviesList.getPosterPath() );
-                //holder.detailMovieTitle.setText( moviesList.getTitle() );
-               // holder.detailMovieOverview.setText( moviesList.getOverview() );
             }
         } );
         return v;
@@ -67,9 +62,6 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
 
     private class MovieHolder {
         TextView movieItem;
-        //TextView detailMovieTitle;
-        //TextView detailMovieOverview;
-        //ImageView detailMovieCover;
     }
 
 

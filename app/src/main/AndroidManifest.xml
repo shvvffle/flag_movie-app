@@ -22,6 +22,7 @@
 
         <activity android:name=".screens.LatestMovieScreen"/>
         <activity android:name=".screens.PopularTvShowScreen"/>
+        <activity android:name=".screens.DetailMovieScreen"/>
         <activity android:name=".screens.SearchMovieScreen"/>
 
 
