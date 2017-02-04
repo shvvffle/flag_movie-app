@@ -3,4 +3,5 @@
     <string name="search_bar">Search movie... </string>
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
+    <string name="release_date">Release date: </string>
 </resources>

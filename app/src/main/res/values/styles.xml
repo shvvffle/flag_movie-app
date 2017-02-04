@@ -9,13 +9,15 @@
     </style>
 
     <style name="movieTitle">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
     <style name="movieDescription">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 </resources>

@@ -2,15 +2,18 @@ package movies.flag.pt.moviesapp.http.requests;
 
 import android.content.Context;
 
-import movies.flag.pt.moviesapp.http.entities.Movie;
+import movies.flag.pt.moviesapp.http.entities.MoviesResponse;
+import movies.flag.pt.moviesapp.screens.StartScreen;
 
 /**
  * Created by Marina on 01/02/2017.
  */
 
-public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Movie> {
+public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<MoviesResponse> {
 
     private static final String PATH = "/search/movie";
+    private static final String QUERY = "query";
+    private static final String QUERY_VALUE = StartScreen.MOVIE_SEARCH;
 
 
     public GetSearchMovieAsyncTask(Context context) {
@@ -24,11 +27,11 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     @Override
     protected void addQueryParams(StringBuilder sb) {
-
+        addQueryParam(sb, QUERY, QUERY_VALUE);
     }
 
     @Override
-    protected Class<Movie> getResponseEntityClass() {
-        return Movie.class;
+    protected Class<MoviesResponse> getResponseEntityClass() {
+        return MoviesResponse.class;
     }
 }

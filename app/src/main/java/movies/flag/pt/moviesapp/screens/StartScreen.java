@@ -16,6 +16,7 @@ import movies.flag.pt.moviesapp.R;
 
 public class StartScreen extends Screen {
 
+    public static String MOVIE_SEARCH;
     private ImageView searchBarAction;
     private EditText searchBarInput;
     private Button getLatestMoviesButton;
@@ -57,11 +58,8 @@ public class StartScreen extends Screen {
             public void onClick(View v) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
                 String movieSearched = searchBarInput.getText().toString();
-                searchMovieIntent.putExtra(SearchMovieScreen.MOVIE_SEARCH, movieSearched);
+                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
                 startActivity(searchMovieIntent);
-                // search happens here -- ver o que foi feito na outra aplicaçao - escrever texto e dps
-                // é mostrado o que se acabou de escrever - diferenca é que aqui é pesquisar aquilo
-                // ver como ligar com o title de movie getTitle()
             }
         });
     }

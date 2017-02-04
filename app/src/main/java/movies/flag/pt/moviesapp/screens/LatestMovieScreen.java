@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class LatestMovieScreen extends Screen {
     private ImageView searchBarAction;
     private EditText searchBarInput;
     private ListView movieList;
-    private TextView detailMovie;
     private ListMovieViewAdapter movieViewAdapter;
 
 
@@ -42,7 +40,6 @@ public class LatestMovieScreen extends Screen {
         searchBarAction = (ImageView) findViewById( R.id.all_screens_search_bar_button );
         searchBarInput = (EditText) findViewById( R.id.all_screens_search_bar_input );
         movieList = (ListView) findViewById( R.id.latest_movie_screen_list_view );
-        detailMovie = (TextView) findViewById( R.id.latest_movie_item);
     }
 
 
