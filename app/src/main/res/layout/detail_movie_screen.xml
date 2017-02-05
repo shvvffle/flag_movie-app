@@ -37,7 +37,6 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:textSize="10sp"
-        android:text="@string/release_date"
         android:layout_below="@id/detail_movie_screen_overview"
         android:id="@+id/detail_movie_screen_date"/>
 

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import movies.flag.pt.moviesapp.R;
 
+import static movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask.movieSearched;
+
 
 /**
  * Created by Marina on 26/01/2017.
@@ -57,8 +59,8 @@ public class StartScreen extends Screen {
             @Override
             public void onClick(View v) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
-                String movieSearched = searchBarInput.getText().toString();
-                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
+                String movieSearch = searchBarInput.getText().toString();
+                searchMovieIntent.putExtra(movieSearched, movieSearch);
                 startActivity(searchMovieIntent);
             }
         });

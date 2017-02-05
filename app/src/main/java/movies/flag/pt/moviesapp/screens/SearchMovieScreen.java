@@ -9,7 +9,7 @@ import movies.flag.pt.moviesapp.http.entities.MoviesResponse;
 import movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask;
 import movies.flag.pt.moviesapp.utils.DLog;
 
-import static movies.flag.pt.moviesapp.screens.StartScreen.MOVIE_SEARCH;
+import static movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask.movieSearched;
 
 /**
  * Created by Marina on 01/02/2017.
@@ -17,7 +17,7 @@ import static movies.flag.pt.moviesapp.screens.StartScreen.MOVIE_SEARCH;
 
 public class SearchMovieScreen extends Screen {
 
-    public TextView movieSearched;
+    public TextView movieResultSearch;
 
 
     @Override
@@ -31,16 +31,16 @@ public class SearchMovieScreen extends Screen {
 
     private void executeRequestSearchMovie() {
         // Example to request get now playing movies
-        new GetSearchMovieAsyncTask(this) {
+        new GetSearchMovieAsyncTask(this, movieSearched) {
 
             @Override
             protected void onResponseSuccess(MoviesResponse moviesResponse) {
                 DLog.d(tag, "onResponseSuccess " + moviesResponse);
                 // Here i can create the adapter :)
-                movieSearched = (TextView) findViewById(R.id.search_movie_screen_detail);
+                movieResultSearch = (TextView) findViewById(R.id.search_movie_screen_detail);
                 Intent searchMovieIntent = getIntent();
-                String movieSearchReceived = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
-                movieSearched.setText(movieSearchReceived);
+                String movieSearchReceived = searchMovieIntent.getStringExtra(movieSearched);
+                movieResultSearch.setText(movieSearchReceived);
 
             }
 

@@ -3,7 +3,6 @@ package movies.flag.pt.moviesapp.http.requests;
 import android.content.Context;
 
 import movies.flag.pt.moviesapp.http.entities.MoviesResponse;
-import movies.flag.pt.moviesapp.screens.StartScreen;
 
 /**
  * Created by Marina on 01/02/2017.
@@ -13,11 +12,11 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     private static final String PATH = "/search/movie";
     private static final String QUERY = "query";
-    private static final String QUERY_VALUE = StartScreen.MOVIE_SEARCH;
+    public static String movieSearched;
 
 
-    public GetSearchMovieAsyncTask(Context context) {
-        super(context);
+    public GetSearchMovieAsyncTask(Context context, String movieSearched) {
+        super(context, movieSearched);
     }
 
     @Override
@@ -27,7 +26,7 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     @Override
     protected void addQueryParams(StringBuilder sb) {
-        addQueryParam(sb, QUERY, QUERY_VALUE);
+        addQueryParam(sb, QUERY, movieSearched);
     }
 
     @Override

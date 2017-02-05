@@ -21,10 +21,17 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
 
     private final String tag = getClass().getSimpleName();
 
+    public String movieSearched;
+
     private Context context;
 
     public ExecuteRequestAsyncTask(Context context){
         this.context = context;
+    }
+
+    public ExecuteRequestAsyncTask(Context context, String movieSearched) {
+        this.context = context;
+        this.movieSearched = movieSearched;
     }
 
     protected abstract String getPath();
