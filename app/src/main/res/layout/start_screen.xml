@@ -12,8 +12,6 @@
     <!-- App Menu -->
 
     <!-- Search bar for movies -->
-    <include layout="@layout/search_bar_screen"
-        android:id="@+id/search_bar_menu"/>
 
 
     <!-- Get Latest Movies -->
@@ -21,20 +19,22 @@
     <Button
         android:id="@+id/start_screen_latest_movie_screen_button"
         android:layout_width="250dp"
+        style="@style/buttonDefault"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="@string/button_latest_movies"
-        android:layout_height="50dp" />
+        android:text="@string/button_latest_movies" />
 
     <!-- Get Popular TV show -->
 
     <Button
         android:layout_below="@id/start_screen_latest_movie_screen_button"
         android:id="@+id/start_screen_popular_tv_show_screen_button"
-        android:layout_width="250dp"
+        style="@style/buttonDefault"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/button_popular_tv_show"
-        android:layout_height="50dp" />
+        android:text="@string/button_popular_tv_show" />
+
+    <include layout="@layout/search_bar_screen"
+        android:id="@+id/search_bar_menu" />
 
 </RelativeLayout>

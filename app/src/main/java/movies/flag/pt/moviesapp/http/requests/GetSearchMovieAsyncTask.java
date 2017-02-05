@@ -4,6 +4,8 @@ import android.content.Context;
 
 import movies.flag.pt.moviesapp.http.entities.MoviesResponse;
 
+import static movies.flag.pt.moviesapp.screens.SearchMovieScreen.MOVIE_SEARCH;
+
 /**
  * Created by Marina on 01/02/2017.
  */
@@ -12,7 +14,6 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     private static final String PATH = "/search/movie";
     private static final String QUERY = "query";
-    public String movieSearched;
 
 
     public GetSearchMovieAsyncTask(Context context, String movieSearched) {
@@ -27,7 +28,7 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     @Override
     protected void addQueryParams(StringBuilder sb) {
-        addQueryParam(sb, QUERY, movieSearched);
+        addQueryParam(sb, QUERY, MOVIE_SEARCH);
     }
 
     @Override

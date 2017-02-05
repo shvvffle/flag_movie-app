@@ -40,4 +40,13 @@
         android:layout_below="@id/detail_movie_screen_overview"
         android:id="@+id/detail_movie_screen_date"/>
 
+    <!-- Share icon -->
+
+    <include
+        layout="@layout/share_icon_screen"
+        android:id="@+id/detail_movie_screen_share_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_movie_screen_date"/>
+
 </RelativeLayout>

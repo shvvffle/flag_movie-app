@@ -58,8 +58,8 @@ public class StartScreen extends Screen {
             @Override
             public void onClick(View v) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
-                String movieSearch = searchBarInput.getText().toString();
-                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearch);
+                String movieSearched = searchBarInput.getText().toString();
+                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
                 startActivity(searchMovieIntent);
             }
         });

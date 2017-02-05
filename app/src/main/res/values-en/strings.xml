@@ -4,4 +4,7 @@
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
     <string name="release_date">Release date: </string>
+    <string name="share_body"></string>
+    <string name="share_subject"></string>
+    <string name="share_using">Share using</string>
 </resources>
