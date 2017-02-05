@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import movies.flag.pt.moviesapp.R;
 
-import static movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask.movieSearched;
+import static movies.flag.pt.moviesapp.screens.SearchMovieScreen.MOVIE_SEARCH;
 
 
 /**
@@ -18,7 +18,6 @@ import static movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask.mov
 
 public class StartScreen extends Screen {
 
-    public static String MOVIE_SEARCH;
     private ImageView searchBarAction;
     private EditText searchBarInput;
     private Button getLatestMoviesButton;
@@ -60,7 +59,7 @@ public class StartScreen extends Screen {
             public void onClick(View v) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
                 String movieSearch = searchBarInput.getText().toString();
-                searchMovieIntent.putExtra(movieSearched, movieSearch);
+                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearch);
                 startActivity(searchMovieIntent);
             }
         });

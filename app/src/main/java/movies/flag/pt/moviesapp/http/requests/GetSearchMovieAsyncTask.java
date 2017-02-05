@@ -12,11 +12,12 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     private static final String PATH = "/search/movie";
     private static final String QUERY = "query";
-    public static String movieSearched;
+    public String movieSearched;
 
 
     public GetSearchMovieAsyncTask(Context context, String movieSearched) {
-        super(context, movieSearched);
+        super(context);
+        this.movieSearched = movieSearched;
     }
 
     @Override
