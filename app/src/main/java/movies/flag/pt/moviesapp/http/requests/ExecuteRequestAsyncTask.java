@@ -29,10 +29,6 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
         this.context = context;
     }
 
-    public ExecuteRequestAsyncTask(Context context, String movieSearched) {
-        this.context = context;
-        this.movieSearched = movieSearched;
-    }
 
     protected abstract String getPath();
 

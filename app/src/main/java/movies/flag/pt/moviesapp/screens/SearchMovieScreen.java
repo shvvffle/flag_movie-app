@@ -15,35 +15,30 @@ import movies.flag.pt.moviesapp.utils.DLog;
 
 public class SearchMovieScreen extends Screen {
 
-    public static String MOVIE_SEARCH;
-    public TextView movieResultSearch;
+    public static final String MOVIE_SEARCH = "movieSearch";
+    private TextView movieResultSearch;
+    private String movieSearchQuery;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        executeRequestSearchMovie();
-
         setContentView(R.layout.search_movie_screen);
-
+        Intent searchMovieIntent = getIntent();
+        movieSearchQuery = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
+        executeRequestSearchMovie();
     }
 
     private void executeRequestSearchMovie() {
-        // Example to request get now playing movies
 
-
-        new GetSearchMovieAsyncTask(this, MOVIE_SEARCH) {
+        new GetSearchMovieAsyncTask(this, movieSearchQuery) {
 
             @Override
             protected void onResponseSuccess(MoviesResponse moviesResponse) {
                 DLog.d(tag, "onResponseSuccess " + moviesResponse);
                 // Here i can create the adapter :)
                 movieResultSearch = (TextView) findViewById(R.id.search_movie_screen_detail);
-                Intent searchMovieIntent = getIntent();
-                String movieSearchReceived = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
-                movieResultSearch.setText(movieSearchReceived);
-
-
+                movieResultSearch.setText(movieSearchQuery);
             }
 
             @Override

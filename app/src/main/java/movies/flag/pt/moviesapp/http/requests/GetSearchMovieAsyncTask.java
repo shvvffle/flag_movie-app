@@ -12,7 +12,8 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
 
     private static final String PATH = "/search/movie";
     private static final String QUERY = "query";
-    public String MOVIE_SEARCH = movieSearched;
+
+    private String movieSearched;
 
 
     public GetSearchMovieAsyncTask(Context context, String movieSearched) {
