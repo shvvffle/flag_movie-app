@@ -38,7 +38,7 @@
         android:layout_marginTop="20dp"
         android:textSize="10sp"
         android:layout_below="@id/detail_movie_screen_overview"
-        android:id="@+id/detail_movie_screen_date"/>
+        android:id="@+id/detail_movie_screen_type"/>
 
     <!-- Share icon -->
 
@@ -47,6 +47,8 @@
         android:id="@+id/detail_movie_screen_share_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detail_movie_screen_date"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/detail_movie_screen_type"/>
 
 </RelativeLayout>

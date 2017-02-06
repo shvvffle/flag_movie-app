@@ -5,4 +5,6 @@
     <string name="button_latest_movies">Obter últimos filmes</string>
     <string name="button_popular_tv_show">Obter séries mais populares</string>
     <string name="release_date">Data de lançamento: </string>
+    <string name="share_body">Devíamos ir ver este filme: </string>
+    <string name="share_using">Partilha com</string>
 </resources>

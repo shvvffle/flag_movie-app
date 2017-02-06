@@ -30,6 +30,8 @@ public class SearchMovieScreen extends Screen {
 
     private void executeRequestSearchMovie() {
         // Example to request get now playing movies
+
+
         new GetSearchMovieAsyncTask(this, MOVIE_SEARCH) {
 
             @Override
@@ -40,6 +42,7 @@ public class SearchMovieScreen extends Screen {
                 Intent searchMovieIntent = getIntent();
                 String movieSearchReceived = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
                 movieResultSearch.setText(movieSearchReceived);
+
 
             }
 

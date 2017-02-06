@@ -16,14 +16,13 @@ public class DetailMovieScreen extends Screen {
 
     private TextView detailMovieTitle;
     private TextView detailMovieOverview;
-    private TextView detailMovieDate;
+    private TextView detailMovieType;
     private ImageView detailMoviePoster;
     private ImageView shareButton;
 
     public static final String MOVIE_TITLE = "MovieTitle";
     public static final String MOVIE_OVERVIEW = "MovieOverview";
     public static final String MOVIE_POSTER = "MoviePoster";
-    public static final String MOVIE_DATE = "MovieDate";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class DetailMovieScreen extends Screen {
 
         findViews();
         getInfoIntent();
-        addListeners();
 
     }
 
@@ -42,7 +40,7 @@ public class DetailMovieScreen extends Screen {
         detailMoviePoster = (ImageView) findViewById(R.id.detail_movie_screen_cover);
         detailMovieTitle = (TextView) findViewById(R.id.detail_movie_screen_title);
         detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
-        detailMovieDate = (TextView) findViewById(R.id.detail_movie_screen_date);
+        detailMovieType = (TextView) findViewById(R.id.detail_movie_screen_type);
         shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
 
     }
@@ -50,28 +48,22 @@ public class DetailMovieScreen extends Screen {
     private void getInfoIntent() {
 
         Intent movieDetailIntent = getIntent();
-        String movieTitle = movieDetailIntent.getStringExtra(MOVIE_TITLE);
+        final String movieTitle = movieDetailIntent.getStringExtra(MOVIE_TITLE);
         detailMovieTitle.setText(movieTitle);
         String movieOverview = movieDetailIntent.getStringExtra(MOVIE_OVERVIEW);
         detailMovieOverview.setText(movieOverview);
-        String movieDate = movieDetailIntent.getStringExtra(MOVIE_DATE);
-        detailMovieDate.setText(R.string.release_date + movieDate);
 
-    }
-
-    private void addListeners() {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                String shareBody = "Your body here";
-                String shareSub = getString(R.string.share_using);
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(shareIntent, getString(R.string.share_using)));
+                String shareMovieTitle = movieTitle;
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMovieTitle + " - We should see this movie!");
+                startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
         });
+
     }
 
 }

@@ -52,11 +52,9 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
                 String movieTitle = moviesList.getTitle();
                 String movieOverview = moviesList.getOverview();
                 String moviePoster = moviesList.getPosterPath();
-                String movieDate = moviesList.getReleaseDate();
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_TITLE, movieTitle);
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_OVERVIEW, movieOverview);
                 movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_POSTER, moviePoster);
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DATE, movieDate);
                 getContext().startActivity(movieDetailIntent);
             }
         } );
