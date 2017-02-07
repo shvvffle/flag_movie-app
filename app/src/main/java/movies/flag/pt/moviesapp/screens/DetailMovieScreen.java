@@ -1,10 +1,17 @@
 package movies.flag.pt.moviesapp.screens;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.InputStream;
 
 import movies.flag.pt.moviesapp.R;
 import movies.flag.pt.moviesapp.http.entities.Movie;
@@ -20,6 +27,7 @@ public class DetailMovieScreen extends Screen {
     private TextView detailMovieVote;
     private ImageView detailMoviePoster;
     private ImageView shareButton;
+    private ProgressBar loaderView;
 
 
     public static final String MOVIE_DETAILS = "MovieDetails";
@@ -42,6 +50,7 @@ public class DetailMovieScreen extends Screen {
         detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
         detailMovieVote = (TextView) findViewById(R.id.detail_movie_screen_vote);
         shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
+        loaderView = (ProgressBar) findViewById(R.id.detail_movie_screen_loader);
 
     }
 
@@ -50,6 +59,9 @@ public class DetailMovieScreen extends Screen {
         Movie movie = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
         final String movieTitle = movie.getTitle();
         detailMovieTitle.setText(movieTitle);
+        DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
+        String moviePosterPath = "https://image.tmdb.org/t/p/w500" + movie.getPosterPath();
+        task.execute(moviePosterPath);
         String movieOverview = movie.getOverview();
         detailMovieOverview.setText(movieOverview);
         final int movieVote = movie.getVoteCount();
@@ -71,6 +83,37 @@ public class DetailMovieScreen extends Screen {
             }
         });
 
+    }
+
+    private class DownloadPosterPathAsyncTask extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected void onPreExecute() {
+            loaderView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            String url = params[0];
+            return downloadImage(url);
+        }
+
+        private Bitmap downloadImage(String url) {
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new java.net.URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.toString());
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            loaderView.setVisibility(View.GONE);
+            detailMoviePoster.setImageBitmap(bitmap);
+        }
     }
 
 }

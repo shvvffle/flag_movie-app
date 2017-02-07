@@ -1,55 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/detail_movie_screen"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
+android:id="@+id/detail_movie_screen"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/detail_movie_screen_cover"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<TextView
+    android:layout_marginTop="20dp"
+    android:id="@+id/detail_movie_screen_title"
+    style="@style/movieTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/detail_movie_screen_cover"
-        android:id="@+id/detail_movie_screen_title"
-        style="@style/movieTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<ProgressBar
+    android:layout_width="wrap_content"
+    android:layout_below="@id/detail_movie_screen_title"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/detail_movie_screen_loader"
+    android:visibility="invisible"
+    android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/detail_movie_screen_title"
-        style="@style/movieDescription"
-        android:id="@+id/detail_movie_screen_overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<ImageView
+    android:layout_marginTop="20dp"
+    android:layout_below="@id/detail_movie_screen_title"
+    android:id="@+id/detail_movie_screen_cover"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:layout_below="@id/detail_movie_screen_overview"
-        android:id="@+id/detail_movie_screen_vote"/>
+<TextView
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_below="@id/detail_movie_screen_cover"
+    style="@style/movieDescription"
+    android:id="@+id/detail_movie_screen_overview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp"
+    android:textSize="14sp"
+    android:layout_below="@id/detail_movie_screen_overview"
+    android:id="@+id/detail_movie_screen_vote" />
 
 
-    <!-- Share icon -->
+<!-- Share icon -->
 
-    <include
-        layout="@layout/share_icon_screen"
-        android:id="@+id/detail_movie_screen_share_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/detail_movie_screen_vote"/>
+<include
+    layout="@layout/share_icon_screen"
+    android:id="@+id/detail_movie_screen_share_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_below="@id/detail_movie_screen_vote" />
 
-</RelativeLayout>
+</RelativeLayout> </ScrollView>
