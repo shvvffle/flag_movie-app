@@ -2,6 +2,8 @@ package movies.flag.pt.moviesapp.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,10 +24,12 @@ public class SearchMovieScreen extends Screen {
 
     public static final String MOVIE_SEARCH = "movieSearch";
     public static final String MOVIE_TITLE = "MovieTitle";
+    private static String REFRESH_SEARCH_LOG;
     private TextView movieResultSearch;
     private String movieSearchQuery;
     private ListView movieSearchList;
     private ListMovieSearchViewAdapter movieSearchViewAdapter;
+    private SwipeRefreshLayout swipeRefreshSearchMovie;
 
 
     @Override
@@ -35,22 +39,48 @@ public class SearchMovieScreen extends Screen {
         Intent searchMovieIntent = getIntent();
         movieSearchQuery = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
         executeRequestSearchMovie();
+
+        findViews();
+        addListeners();
+    }
+
+    private void findViews() {
+        swipeRefreshSearchMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshSearchMovie);
+        movieResultSearch = (TextView) findViewById(R.id.search_movie_screen_detail);
+        movieSearchList = (ListView) findViewById(R.id.search_movie__screen_list);
+    }
+
+    private void addListeners() {
+
+        swipeRefreshSearchMovie.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(REFRESH_SEARCH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        swipeRefreshSearchMovie.setRefreshing(true);
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        executeRequestSearchMovie();
+                        swipeRefreshSearchMovie.setRefreshing(false);
+                    }
+                }
+        );
+
+
     }
 
     private void executeRequestSearchMovie() {
-
+        // Request search movies
         new GetSearchMovieAsyncTask(this, movieSearchQuery) {
 
             @Override
             protected void onResponseSuccess(MoviesResponse moviesResponse) {
                 DLog.d(tag, "onResponseSuccess " + moviesResponse);
-                // Here i can create the adapter :)
-                movieResultSearch = (TextView) findViewById(R.id.search_movie_screen_detail);
+                // Adapter
                 String searchFor = getResources().getString(R.string.search_for);
                 movieResultSearch.setText(searchFor + " " + movieSearchQuery);
                 List<Movie> movies = moviesResponse.getMovies();
-                movieSearchList = (ListView) findViewById(R.id.search_movie__screen_list);
-                movieSearchViewAdapter = new ListMovieSearchViewAdapter(SearchMovieScreen.this, movies );
+                movieSearchViewAdapter = new ListMovieSearchViewAdapter(SearchMovieScreen.this, movies);
                 movieSearchList.setAdapter(movieSearchViewAdapter);
             }
 

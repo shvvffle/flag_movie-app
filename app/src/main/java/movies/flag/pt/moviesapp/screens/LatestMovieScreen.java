@@ -1,8 +1,8 @@
 package movies.flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
@@ -20,46 +20,67 @@ import movies.flag.pt.moviesapp.utils.DLog;
 
 public class LatestMovieScreen extends Screen {
 
-    private ImageView searchBarAction;
-    private EditText searchBarInput;
+
+    private static String REFRESH_LOG;
     private ListView movieList;
     private ListMovieViewAdapter movieViewAdapter;
+    private SwipeRefreshLayout swipeRefreshMovie;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
+        super.onCreate(savedInstanceState);
         executeRequestLatestMovies();
 
-        setContentView( R.layout.latest_movie_screen );
+        setContentView(R.layout.latest_movie_screen);
 
         findViews();
+        addListeners();
     }
 
+
     private void findViews() {
-        searchBarAction = (ImageView) findViewById( R.id.all_screens_search_bar_button );
-        searchBarInput = (EditText) findViewById( R.id.all_screens_search_bar_input );
-        movieList = (ListView) findViewById( R.id.latest_movie_screen_list_view );
+        movieList = (ListView) findViewById(R.id.latest_movie_screen_list_view);
+        swipeRefreshMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshMovie);
+    }
+
+    private void addListeners() {
+
+        swipeRefreshMovie.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        swipeRefreshMovie.setRefreshing(true);
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        executeRequestLatestMovies();
+                        swipeRefreshMovie.setRefreshing(false);
+                    }
+                }
+        );
+
+
     }
 
 
     private void executeRequestLatestMovies() {
-        // Example to request get now playing movies
-        new GetNowPlayingMoviesAsyncTask( this ) {
+        // Request get now playing movies
+        new GetNowPlayingMoviesAsyncTask(this) {
 
             @Override
             protected void onResponseSuccess(MoviesResponse moviesResponse) {
-                DLog.d( tag, "onResponseSuccess " + moviesResponse );
-                // Here i can create the adapter :)
+                DLog.d(tag, "onResponseSuccess " + moviesResponse);
+                // Adapter
                 List<Movie> movies = moviesResponse.getMovies();
-                movieViewAdapter = new ListMovieViewAdapter(LatestMovieScreen.this, movies );
+                movieViewAdapter = new ListMovieViewAdapter(LatestMovieScreen.this, movies);
                 movieList.setAdapter(movieViewAdapter);
             }
 
             @Override
             protected void onNetworkError() {
-                DLog.d( tag, "onNetworkError " );
-                // Here i now that some error occur when processing the request,
+                DLog.d(tag, "onNetworkError ");
+                // Error occur when processing the request,
                 // possible my internet connection if turned off
             }
         }.execute();

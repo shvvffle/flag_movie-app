@@ -9,17 +9,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Search bar for movies -->
-        <include
-            android:id="@+id/search_bar_menu"
-            layout="@layout/search_bar_screen" />
-
 
         <ListView
             android:id="@+id/popular_tv_show_screen_list_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/search_bar_menu"></ListView>
+            android:layout_height="wrap_content"></ListView>
 
     </RelativeLayout>
 

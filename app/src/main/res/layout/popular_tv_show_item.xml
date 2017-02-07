@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/popular_tv_show_item"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
+        android:textSize="18sp"
         />
 
 
