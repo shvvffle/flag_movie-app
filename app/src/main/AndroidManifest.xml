@@ -24,6 +24,7 @@
         <activity android:name=".screens.PopularTvShowScreen"/>
         <activity android:name=".screens.DetailMovieScreen"/>
         <activity android:name=".screens.SearchMovieScreen"/>
+        <activity android:name=".screens.DetailTvShowScreen"/>
 
 
         <!-- Database configurations -->

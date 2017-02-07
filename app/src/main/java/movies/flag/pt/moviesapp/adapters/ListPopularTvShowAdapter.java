@@ -1,6 +1,7 @@
 package movies.flag.pt.moviesapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import movies.flag.pt.moviesapp.R;
 import movies.flag.pt.moviesapp.http.entities.ResultPopularTvShow;
+import movies.flag.pt.moviesapp.screens.DetailTvShowScreen;
 
 /**
  * Created by Marina on 29/01/2017.
@@ -28,7 +30,7 @@ public class ListPopularTvShowAdapter extends ArrayAdapter<ResultPopularTvShow> 
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         TvShowHolder holder;
-        ResultPopularTvShow tvShowList = getItem( position );
+        final ResultPopularTvShow tvShow = getItem( position );
 
         if (v == null) {
             v = LayoutInflater.from( getContext() ).inflate( R.layout.popular_tv_show_item, null );
@@ -39,7 +41,15 @@ public class ListPopularTvShowAdapter extends ArrayAdapter<ResultPopularTvShow> 
             holder = (TvShowHolder) v.getTag();
         }
 
-        holder.tvShowItem.setText( tvShowList.getName() );
+        holder.tvShowItem.setText( tvShow.getName() );
+        holder.tvShowItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent TvShowDetailIntent = new Intent(getContext(), DetailTvShowScreen.class );
+                TvShowDetailIntent.putExtra(DetailTvShowScreen.TV_SHOW_DETAILS, tvShow);
+                getContext().startActivity(TvShowDetailIntent);
+            }
+        });
         return v;
     }
 

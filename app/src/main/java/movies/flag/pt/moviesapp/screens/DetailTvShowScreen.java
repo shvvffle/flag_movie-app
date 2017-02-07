@@ -14,29 +14,29 @@ import android.widget.TextView;
 import java.io.InputStream;
 
 import movies.flag.pt.moviesapp.R;
-import movies.flag.pt.moviesapp.http.entities.Movie;
+import movies.flag.pt.moviesapp.http.entities.ResultPopularTvShow;
 
 /**
  * Created by Marina on 01/02/2017.
  */
 
-public class DetailMovieScreen extends Screen {
+public class DetailTvShowScreen extends Screen {
 
-    private TextView detailMovieTitle;
-    private TextView detailMovieOverview;
-    private TextView detailMovieVote;
-    private ImageView detailMoviePoster;
+    private TextView detailTvShowTitle;
+    private TextView detailTvShowOverview;
+    private TextView detailTvShowVote;
+    private ImageView detailTvShowPoster;
     private ImageView shareButton;
     private ProgressBar loaderView;
 
 
-    public static final String MOVIE_DETAILS = "MovieDetails";
+    public static final String TV_SHOW_DETAILS = "TvShowDetails";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.detail_movie_screen);
+        setContentView(R.layout.detail_tv_show_screen);
 
         findViews();
         getInfoIntent();
@@ -45,40 +45,40 @@ public class DetailMovieScreen extends Screen {
 
     private void findViews() {
 
-        detailMoviePoster = (ImageView) findViewById(R.id.detail_movie_screen_cover);
-        detailMovieTitle = (TextView) findViewById(R.id.detail_movie_screen_title);
-        detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
-        detailMovieVote = (TextView) findViewById(R.id.detail_movie_screen_vote);
-        shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
-        loaderView = (ProgressBar) findViewById(R.id.detail_movie_screen_loader);
+        detailTvShowPoster = (ImageView) findViewById(R.id.detail_tv_show_screen_cover);
+        detailTvShowTitle = (TextView) findViewById(R.id.detail_tv_show_screen_title);
+        detailTvShowOverview = (TextView) findViewById(R.id.detail_tv_show_screen_overview);
+        detailTvShowVote = (TextView) findViewById(R.id.detail_tv_show_screen_vote);
+        shareButton = (ImageView) findViewById(R.id.detail_tv_show_screen_share_icon);
+        loaderView = (ProgressBar) findViewById(R.id.detail_tv_show_screen_loader);
 
     }
 
     private void getInfoIntent() {
-        Intent movieDetailIntent = getIntent();
-        Movie movie = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
-        final String movieTitle = movie.getTitle();
-        detailMovieTitle.setText(movieTitle);
+        Intent TvShowDetailIntent = getIntent();
+        ResultPopularTvShow tvShow = TvShowDetailIntent.getParcelableExtra(TV_SHOW_DETAILS);
+        final String tvShowTitle = tvShow.getName();
+        detailTvShowTitle.setText(tvShowTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String moviePosterPath = "https://image.tmdb.org/t/p/w500" + movie.getPosterPath();
-        task.execute(moviePosterPath);
-        String movieOverview = movie.getOverview();
-        detailMovieOverview.setText(movieOverview);
-        final int movieVote = movie.getVoteCount();
-        String movieVoteString = getResources().getString(R.string.movie_vote);
-        detailMovieVote.setText(movieVoteString + (String.valueOf(movieVote)));
+        String tvShowPosterPath = "https://image.tmdb.org/t/p/w500" + tvShow.getPosterPath();
+        task.execute(tvShowPosterPath);
+        String movieOverview = tvShow.getOverview();
+        detailTvShowOverview.setText(movieOverview);
+        final int tvShowVote = tvShow.getVoteCount();
+        String tvShowVoteString = getResources().getString(R.string.tv_show_vote);
+        detailTvShowVote.setText(tvShowVoteString + (String.valueOf(tvShowVote)));
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                String shareMovieTitle = movieTitle;
-                String shareBody = getResources().getString(R.string.share_body_movie);
-                String shareVote = String.valueOf(movieVote);
+                String shareTvShowTitle = tvShowTitle;
+                String shareBody = getResources().getString(R.string.share_body_tv);
+                String shareVote = String.valueOf(tvShowVote);
                 String shareUsing = getResources().getString(R.string.share_using);
                 String shareVoteString = getResources().getString(R.string.share_vote);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareMovieTitle + " " + shareVoteString + " " + shareVote);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareTvShowTitle + " " + shareVoteString + " " + shareVote);
                 startActivity(Intent.createChooser(shareIntent, shareUsing));
             }
         });
@@ -112,7 +112,7 @@ public class DetailMovieScreen extends Screen {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             loaderView.setVisibility(View.GONE);
-            detailMoviePoster.setImageBitmap(bitmap);
+            detailTvShowPoster.setImageBitmap(bitmap);
         }
     }
 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
 <RelativeLayout
-android:id="@+id/detail_movie_screen"
+android:id="@+id/detail_tv_show_screen"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
@@ -12,23 +12,23 @@ android:orientation="vertical">
 
 <TextView
     android:layout_marginTop="20dp"
-    android:id="@+id/detail_movie_screen_title"
+    android:id="@+id/detail_tv_show_screen_title"
     style="@style/movieTitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 
 <ProgressBar
     android:layout_width="wrap_content"
-    android:layout_below="@id/detail_movie_screen_title"
+    android:layout_below="@id/detail_tv_show_screen_title"
     android:layout_centerHorizontal="true"
-    android:id="@+id/detail_movie_screen_loader"
+    android:id="@+id/detail_tv_show_screen_loader"
     android:visibility="invisible"
     android:layout_height="wrap_content" />
 
 <ImageView
     android:layout_marginTop="20dp"
-    android:layout_below="@id/detail_movie_screen_title"
-    android:id="@+id/detail_movie_screen_cover"
+    android:layout_below="@id/detail_tv_show_screen_title"
+    android:id="@+id/detail_tv_show_screen_cover"
     android:layout_centerHorizontal="true"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
@@ -37,9 +37,9 @@ android:orientation="vertical">
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
-    android:layout_below="@id/detail_movie_screen_cover"
+    android:layout_below="@id/detail_tv_show_screen_cover"
     style="@style/movieDescription"
-    android:id="@+id/detail_movie_screen_overview"
+    android:id="@+id/detail_tv_show_screen_overview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 
@@ -50,20 +50,20 @@ android:orientation="vertical">
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
     android:textSize="14sp"
-    android:layout_below="@id/detail_movie_screen_overview"
-    android:id="@+id/detail_movie_screen_vote" />
+    android:layout_below="@id/detail_tv_show_screen_overview"
+    android:id="@+id/detail_tv_show_screen_vote" />
 
 
 <!-- Share icon -->
 
 <include
     layout="@layout/share_icon_screen"
-    android:id="@+id/detail_movie_screen_share_icon"
+    android:id="@+id/detail_tv_show_screen_share_icon"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
-    android:layout_below="@id/detail_movie_screen_vote" />
+    android:layout_below="@id/detail_tv_show_screen_vote" />
 
 </RelativeLayout> </ScrollView>

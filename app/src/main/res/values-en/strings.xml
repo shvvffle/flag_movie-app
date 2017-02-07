@@ -4,9 +4,11 @@
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
     <string name="release_date">Release date: </string>
-    <string name="share_body">We should see this movie: </string>
+    <string name="share_body_movie">We should see this movie: </string>
+    <string name="share_body_tv">We should see this TV show: </string>
     <string name="share_using">Share using</string>
     <string name="search_for">You searched for the following movie: </string>
     <string name="share_vote">Look it has this rating:</string>
-    <string name="movie_vote">Movie vote:</string>
+    <string name="movie_vote">Movie vote: </string>
+    <string name="tv_show_vote">TV show vote: </string>
 </resources>
