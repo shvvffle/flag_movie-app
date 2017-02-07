@@ -49,8 +49,6 @@ public class ListMovieSearchViewAdapter extends ArrayAdapter<Movie> {
             @Override
             public void onClick(View v) {
                 Intent movieSearchDetailIntent = new Intent(getContext(), SearchMovieScreen.class );
-                String movieTitle = movieSearchList.getTitle();
-                movieSearchDetailIntent.putExtra(SearchMovieScreen.MOVIE_TITLE, movieTitle);
                 getContext().startActivity(movieSearchDetailIntent);
             }
         } );

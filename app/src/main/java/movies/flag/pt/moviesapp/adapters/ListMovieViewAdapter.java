@@ -33,7 +33,7 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         final MovieHolder holder;
-        final Movie moviesList = getItem( position );
+        final Movie movie = getItem( position );
 
         if (v == null) {
             v = LayoutInflater.from( getContext() ).inflate( R.layout.latest_movie_item, null );
@@ -44,17 +44,12 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
             holder = (MovieHolder) v.getTag();
         }
 
-        holder.movieItem.setText( moviesList.getTitle() );
+        holder.movieItem.setText( movie.getTitle() );
         holder.movieItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class );
-                String movieTitle = moviesList.getTitle();
-                String movieOverview = moviesList.getOverview();
-                String moviePoster = moviesList.getPosterPath();
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_TITLE, movieTitle);
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_OVERVIEW, movieOverview);
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_POSTER, moviePoster);
+                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, movie);
                 getContext().startActivity(movieDetailIntent);
             }
         } );

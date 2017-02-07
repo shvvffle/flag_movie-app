@@ -7,4 +7,6 @@
     <string name="share_body">We should see this movie: </string>
     <string name="share_using">Share using</string>
     <string name="search_for">You searched for the following movie: </string>
+    <string name="share_vote">Look it has this rating:</string>
+    <string name="movie_vote">Movie vote:</string>
 </resources>

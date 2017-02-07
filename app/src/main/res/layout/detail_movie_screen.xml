@@ -36,9 +36,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:textSize="10sp"
+        android:textSize="14sp"
         android:layout_below="@id/detail_movie_screen_overview"
-        android:id="@+id/detail_movie_screen_type"/>
+        android:id="@+id/detail_movie_screen_vote"/>
+
 
     <!-- Share icon -->
 
@@ -49,6 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/detail_movie_screen_type"/>
+        android:layout_below="@id/detail_movie_screen_vote"/>
 
 </RelativeLayout>

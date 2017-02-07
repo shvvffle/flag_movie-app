@@ -23,7 +23,6 @@ import movies.flag.pt.moviesapp.utils.DLog;
 public class SearchMovieScreen extends Screen {
 
     public static final String MOVIE_SEARCH = "movieSearch";
-    public static final String MOVIE_TITLE = "MovieTitle";
     private static String REFRESH_SEARCH_LOG;
     private TextView movieResultSearch;
     private String movieSearchQuery;

@@ -8,4 +8,6 @@
     <string name="share_body">Devíamos ir ver este filme: </string>
     <string name="share_using">Partilha com</string>
     <string name="search_for">Pesquisaste o seguinte filme: </string>
+    <string name="share_vote">Olha tem este rating:</string>
+    <string name="movie_vote">Votos do filme:</string>
 </resources>

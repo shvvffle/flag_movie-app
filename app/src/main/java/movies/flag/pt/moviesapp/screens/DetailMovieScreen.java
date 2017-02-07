@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import movies.flag.pt.moviesapp.R;
+import movies.flag.pt.moviesapp.http.entities.Movie;
 
 /**
  * Created by Marina on 01/02/2017.
@@ -16,13 +17,12 @@ public class DetailMovieScreen extends Screen {
 
     private TextView detailMovieTitle;
     private TextView detailMovieOverview;
-    private TextView detailMovieType;
+    private TextView detailMovieVote;
     private ImageView detailMoviePoster;
     private ImageView shareButton;
 
-    public static final String MOVIE_TITLE = "MovieTitle";
-    public static final String MOVIE_OVERVIEW = "MovieOverview";
-    public static final String MOVIE_POSTER = "MoviePoster";
+
+    public static final String MOVIE_DETAILS = "MovieDetails";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +40,21 @@ public class DetailMovieScreen extends Screen {
         detailMoviePoster = (ImageView) findViewById(R.id.detail_movie_screen_cover);
         detailMovieTitle = (TextView) findViewById(R.id.detail_movie_screen_title);
         detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
+        detailMovieVote = (TextView) findViewById(R.id.detail_movie_screen_vote);
         shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
 
     }
 
     private void getInfoIntent() {
-
         Intent movieDetailIntent = getIntent();
-        final String movieTitle = movieDetailIntent.getStringExtra(MOVIE_TITLE);
+        Movie movie = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
+        final String movieTitle = movie.getTitle();
         detailMovieTitle.setText(movieTitle);
-        String movieOverview = movieDetailIntent.getStringExtra(MOVIE_OVERVIEW);
+        String movieOverview = movie.getOverview();
         detailMovieOverview.setText(movieOverview);
+        final int movieVote = movie.getVoteCount();
+        String movieVoteString = getResources().getString(R.string.movie_vote);
+        detailMovieVote.setText(movieVoteString + (String.valueOf(movieVote)));
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +63,10 @@ public class DetailMovieScreen extends Screen {
                 shareIntent.setType("text/plain");
                 String shareMovieTitle = movieTitle;
                 String shareBody = getResources().getString(R.string.share_body);
+                String shareVote = String.valueOf(movieVote);
                 String shareUsing = getResources().getString(R.string.share_using);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareMovieTitle);
+                String shareVoteString = getResources().getString(R.string.share_vote);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareMovieTitle + " " + shareVoteString + " " + shareVote);
                 startActivity(Intent.createChooser(shareIntent, shareUsing));
             }
         });
