@@ -40,7 +40,6 @@ public class DetailMovieScreen extends Screen {
         detailMoviePoster = (ImageView) findViewById(R.id.detail_movie_screen_cover);
         detailMovieTitle = (TextView) findViewById(R.id.detail_movie_screen_title);
         detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
-        detailMovieType = (TextView) findViewById(R.id.detail_movie_screen_type);
         shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
 
     }
@@ -59,8 +58,10 @@ public class DetailMovieScreen extends Screen {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 String shareMovieTitle = movieTitle;
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMovieTitle + " - We should see this movie!");
-                startActivity(Intent.createChooser(shareIntent, "Share using"));
+                String shareBody = getResources().getString(R.string.share_body);
+                String shareUsing = getResources().getString(R.string.share_using);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareMovieTitle);
+                startActivity(Intent.createChooser(shareIntent, shareUsing));
             }
         });
 

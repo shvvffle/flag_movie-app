@@ -2,9 +2,14 @@ package movies.flag.pt.moviesapp.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import movies.flag.pt.moviesapp.R;
+import movies.flag.pt.moviesapp.adapters.ListMovieSearchViewAdapter;
+import movies.flag.pt.moviesapp.http.entities.Movie;
 import movies.flag.pt.moviesapp.http.entities.MoviesResponse;
 import movies.flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask;
 import movies.flag.pt.moviesapp.utils.DLog;
@@ -16,8 +21,11 @@ import movies.flag.pt.moviesapp.utils.DLog;
 public class SearchMovieScreen extends Screen {
 
     public static final String MOVIE_SEARCH = "movieSearch";
+    public static final String MOVIE_TITLE = "MovieTitle";
     private TextView movieResultSearch;
     private String movieSearchQuery;
+    private ListView movieSearchList;
+    private ListMovieSearchViewAdapter movieSearchViewAdapter;
 
 
     @Override
@@ -38,7 +46,12 @@ public class SearchMovieScreen extends Screen {
                 DLog.d(tag, "onResponseSuccess " + moviesResponse);
                 // Here i can create the adapter :)
                 movieResultSearch = (TextView) findViewById(R.id.search_movie_screen_detail);
-                movieResultSearch.setText(movieSearchQuery);
+                String searchFor = getResources().getString(R.string.search_for);
+                movieResultSearch.setText(searchFor + " " + movieSearchQuery);
+                List<Movie> movies = moviesResponse.getMovies();
+                movieSearchList = (ListView) findViewById(R.id.search_movie__screen_list);
+                movieSearchViewAdapter = new ListMovieSearchViewAdapter(SearchMovieScreen.this, movies );
+                movieSearchList.setAdapter(movieSearchViewAdapter);
             }
 
             @Override
