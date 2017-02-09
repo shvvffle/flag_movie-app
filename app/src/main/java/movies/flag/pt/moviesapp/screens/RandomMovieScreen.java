@@ -1,5 +1,6 @@
 package movies.flag.pt.moviesapp.screens;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.io.InputStream;
 
 import movies.flag.pt.moviesapp.R;
+import movies.flag.pt.moviesapp.http.entities.Movie;
 
 /**
  * Created by Marina on 09/02/2017.
@@ -26,6 +28,8 @@ public class RandomMovieScreen extends Screen {
     private ImageView randomMoviePoster;
     private ImageView shareButton;
     private ProgressBar loaderView;
+
+    public static final String MOVIE_DETAILS_TO_RANDOM = "MovieDetailsToRandom";
 
 
     @Override
@@ -48,6 +52,8 @@ public class RandomMovieScreen extends Screen {
     }
 
     private void getInfoIntent() {
+        Intent movieRandomIntent = getIntent();
+        Movie movie = movieRandomIntent.getParcelableExtra(MOVIE_DETAILS_TO_RANDOM);
         RandomMovieScreen.DownloadPosterPathAsyncTask task = new RandomMovieScreen.DownloadPosterPathAsyncTask();
     }
 

@@ -22,6 +22,7 @@ public class StartScreen extends Screen {
     private EditText searchBarInput;
     private Button getLatestMoviesButton;
     private Button getPopularTvShowButton;
+    private Button getRandomMovieButton;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +39,20 @@ public class StartScreen extends Screen {
         searchBarInput = (EditText) findViewById(R.id.all_screens_search_bar_input);
         getLatestMoviesButton = (Button) findViewById(R.id.start_screen_latest_movie_screen_button);
         getPopularTvShowButton = (Button) findViewById(R.id.start_screen_popular_tv_show_screen_button);
+        getRandomMovieButton = (Button) findViewById(R.id.start_screen_random_movie_button);
 
     }
 
     private void addListeners() {
+        searchBarAction.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
+                String movieSearched = searchBarInput.getText().toString();
+                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
+                startActivity(searchMovieIntent);
+            }
+        });
         getLatestMoviesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,13 +65,10 @@ public class StartScreen extends Screen {
                 startActivity(PopularTvShowScreen.class);
             }
         });
-        searchBarAction.setOnClickListener(new View.OnClickListener(){
+        getRandomMovieButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
-                String movieSearched = searchBarInput.getText().toString();
-                searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
-                startActivity(searchMovieIntent);
+                startActivity(RandomMovieScreen.class);
             }
         });
     }
