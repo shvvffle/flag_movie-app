@@ -64,7 +64,7 @@ public class DetailTvShowScreen extends Screen {
         task.execute(tvShowPosterPath);
         String movieOverview = tvShow.getOverview();
         detailTvShowOverview.setText(movieOverview);
-        final int tvShowVote = tvShow.getVoteCount();
+        final double tvShowVote = tvShow.getVoteAverage();
         String tvShowVoteString = getResources().getString(R.string.tv_show_vote);
         detailTvShowVote.setText(tvShowVoteString + " " + (String.valueOf(tvShowVote)));
 

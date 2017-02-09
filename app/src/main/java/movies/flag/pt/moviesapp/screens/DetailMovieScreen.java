@@ -64,7 +64,7 @@ public class DetailMovieScreen extends Screen {
         task.execute(moviePosterPath);
         String movieOverview = movie.getOverview();
         detailMovieOverview.setText(movieOverview);
-        final int movieVote = movie.getVoteCount();
+        final double movieVote = movie.getVoteAverage();
         String movieVoteString = getResources().getString(R.string.movie_vote);
         detailMovieVote.setText(movieVoteString + " " +  (String.valueOf(movieVote)));
 
