@@ -3,67 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout
-android:id="@+id/detail_movie_screen"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/detail_movie_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<!-- Movie Title -->
+        <TextView
+            android:id="@+id/detail_movie_screen_title"
+            style="@style/movieTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+
+        <!-- Loader for Poster -->
+
+        <ProgressBar
+            android:id="@+id/detail_movie_screen_loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_movie_screen_title"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
+
+        <!-- Poster -->
+
+        <ImageView
+            android:id="@+id/detail_movie_screen_cover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_movie_screen_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- Movie overview -->
+
+        <TextView
+            android:id="@+id/detail_movie_screen_overview"
+            style="@style/movieDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_movie_screen_cover"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+
+        <!-- Movie score -->
+
+        <TextView
+            android:id="@+id/detail_movie_screen_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_movie_screen_overview"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp" />
 
 
-<TextView
-    android:layout_marginTop="20dp"
-    android:id="@+id/detail_movie_screen_title"
-    style="@style/movieTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+        <!-- Share icon -->
 
-<ProgressBar
-    android:layout_width="wrap_content"
-    android:layout_below="@id/detail_movie_screen_title"
-    android:layout_centerHorizontal="true"
-    android:id="@+id/detail_movie_screen_loader"
-    android:visibility="invisible"
-    android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/detail_movie_screen_share_icon"
+            layout="@layout/share_icon_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_movie_screen_vote"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
 
-<ImageView
-    android:layout_marginTop="20dp"
-    android:layout_below="@id/detail_movie_screen_title"
-    android:id="@+id/detail_movie_screen_cover"
-    android:layout_centerHorizontal="true"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-
-<TextView
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_below="@id/detail_movie_screen_cover"
-    style="@style/movieDescription"
-    android:id="@+id/detail_movie_screen_overview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="20dp"
-    android:textSize="14sp"
-    android:layout_below="@id/detail_movie_screen_overview"
-    android:id="@+id/detail_movie_screen_vote" />
-
-
-<!-- Share icon -->
-
-<include
-    layout="@layout/share_icon_screen"
-    android:id="@+id/detail_movie_screen_share_icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
-    android:layout_below="@id/detail_movie_screen_vote" />
-
-</RelativeLayout> </ScrollView>
+    </RelativeLayout>
+</ScrollView>
