@@ -1,9 +1,16 @@
 package movies.flag.pt.moviesapp.screens;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.InputStream;
 
 import movies.flag.pt.moviesapp.R;
 
@@ -27,6 +34,7 @@ public class RandomMovieScreen extends Screen {
 
         setContentView(R.layout.random_movie_screen);
         findViews();
+        getInfoIntent();
     }
 
     private void findViews() {
@@ -37,5 +45,40 @@ public class RandomMovieScreen extends Screen {
         randomMovieVote = (TextView) findViewById(R.id.random_movie_screen_vote);
         shareButton = (ImageView) findViewById(R.id.random_movie_screen_share_icon);
         loaderView = (ProgressBar) findViewById(R.id.random_movie_screen_loader);
+    }
+
+    private void getInfoIntent() {
+        RandomMovieScreen.DownloadPosterPathAsyncTask task = new RandomMovieScreen.DownloadPosterPathAsyncTask();
+    }
+
+    private class DownloadPosterPathAsyncTask extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected void onPreExecute() {
+            loaderView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            String url = params[0];
+            return downloadImage(url);
+        }
+
+        private Bitmap downloadImage(String url) {
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new java.net.URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.toString());
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            loaderView.setVisibility(View.GONE);
+            randomMoviePoster.setImageBitmap(bitmap);
+        }
     }
 }
