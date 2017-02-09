@@ -66,19 +66,19 @@ public class DetailTvShowScreen extends Screen {
         detailTvShowOverview.setText(movieOverview);
         final int tvShowVote = tvShow.getVoteCount();
         String tvShowVoteString = getResources().getString(R.string.tv_show_vote);
-        detailTvShowVote.setText(tvShowVoteString + (String.valueOf(tvShowVote)));
+        detailTvShowVote.setText(tvShowVoteString + " " + (String.valueOf(tvShowVote)));
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                String shareTvShowTitle = tvShowTitle;
+                String shareTvShowTitle = tvShowTitle + ".";
                 String shareBody = getResources().getString(R.string.share_body_tv);
                 String shareVote = String.valueOf(tvShowVote);
                 String shareUsing = getResources().getString(R.string.share_using);
                 String shareVoteString = getResources().getString(R.string.share_vote);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareTvShowTitle + " " + shareVoteString + " " + shareVote);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody + " " + shareTvShowTitle + " " + shareVoteString + " " + shareVote + "!");
                 startActivity(Intent.createChooser(shareIntent, shareUsing));
             }
         });

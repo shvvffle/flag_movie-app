@@ -21,8 +21,6 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
 
     private final String tag = getClass().getSimpleName();
 
-    public String movieSearched;
-
     private Context context;
 
     public ExecuteRequestAsyncTask(Context context){

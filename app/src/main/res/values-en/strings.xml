@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MoviesApp - Marina Marques</string>
     <string name="search_bar">Search movie... </string>
+    <string name="language">en</string>
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
-    <string name="release_date">Release date: </string>
+    <string name="button_random_movie">Which movie should I see today?</string>
     <string name="share_body_movie">We should see this movie: </string>
     <string name="share_body_tv">We should see this TV show: </string>
     <string name="share_using">Share using</string>
