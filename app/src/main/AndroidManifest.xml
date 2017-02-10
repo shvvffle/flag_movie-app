@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="movies.flag.pt.moviesapp">
+          package="flag.pt.moviesapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -25,7 +25,8 @@
         <activity android:name=".screens.DetailMovieScreen"/>
         <activity android:name=".screens.SearchMovieScreen"/>
         <activity android:name=".screens.DetailTvShowScreen"/>
-
+        <activity android:name=".screens.RandomMovieScreen"/>
+        <activity android:name=".screens.TopRatedMovieScreen"/>
 
         <!-- Database configurations -->
 

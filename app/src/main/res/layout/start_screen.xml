@@ -1,40 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- Banner -->
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <!-- App Menu -->
 
     <!-- Search bar for movies -->
-
+    <include
+        android:id="@+id/search_bar_menu"
+        layout="@layout/search_bar_screen" />
 
     <!-- Get Latest Movies -->
 
     <Button
         android:id="@+id/start_screen_latest_movie_screen_button"
-        android:layout_width="250dp"
         style="@style/buttonDefault"
-        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
         android:layout_marginTop="100dp"
         android:text="@string/button_latest_movies" />
+
+    <!-- Get Top Rated Movie -->
+
+    <Button
+        android:id="@+id/start_screen_top_rated_movie_screen_button"
+        style="@style/buttonDefault"
+        android:layout_below="@id/start_screen_latest_movie_screen_button"
+        android:layout_marginTop="20dp"
+        android:text="@string/button_top_rated_movies" />
+
 
     <!-- Get Popular TV show -->
 
     <Button
-        android:layout_below="@id/start_screen_latest_movie_screen_button"
         android:id="@+id/start_screen_popular_tv_show_screen_button"
         style="@style/buttonDefault"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/start_screen_top_rated_movie_screen_button"
         android:layout_marginTop="20dp"
         android:text="@string/button_popular_tv_show" />
 
-    <include layout="@layout/search_bar_screen"
-        android:id="@+id/search_bar_menu" />
+    <!-- Get Random Movie -->
+
+    <Button
+        android:id="@+id/start_screen_random_movie_screen_button"
+        style="@style/buttonDefault"
+        android:layout_below="@id/start_screen_popular_tv_show_screen_button"
+        android:layout_marginTop="20dp"
+        android:text="@string/button_random_movie" />
+
+
 
 </RelativeLayout>
