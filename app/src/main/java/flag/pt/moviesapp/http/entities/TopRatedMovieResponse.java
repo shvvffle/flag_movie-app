@@ -13,7 +13,7 @@ public class TopRatedMovieResponse {
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<ResultTopRatedMovie> resultTopRatedMovies = null;
+    private List<Movie> resultTopRatedMovies = null;
     @SerializedName("total_results")
     @Expose
     private Integer totalResults;
@@ -29,11 +29,11 @@ public class TopRatedMovieResponse {
         this.page = page;
     }
 
-    public List<ResultTopRatedMovie> getResultTopRatedMovies() {
+    public List<Movie> getResultTopRatedMovies() {
         return resultTopRatedMovies;
     }
 
-    public void setResultTopRatedMovies(List<ResultTopRatedMovie> resultTopRatedMovies) {
+    public void setResultTopRatedMovies(List<Movie> resultTopRatedMovies) {
         this.resultTopRatedMovies = resultTopRatedMovies;
     }
 

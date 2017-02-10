@@ -9,7 +9,7 @@ import java.util.List;
 
 import flag.pt.moviesapp.R;
 import flag.pt.moviesapp.adapters.ListMovieTopRatedViewAdapter;
-import flag.pt.moviesapp.http.entities.ResultTopRatedMovie;
+import flag.pt.moviesapp.http.entities.Movie;
 import flag.pt.moviesapp.http.entities.TopRatedMovieResponse;
 import flag.pt.moviesapp.http.requests.GetNowTopRatedMoviesAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
@@ -25,7 +25,6 @@ public class TopRatedMovieScreen extends Screen {
     private ListView movieTopRatedList;
     private ListMovieTopRatedViewAdapter movieTopRatedViewAdapter;
     private SwipeRefreshLayout swipeRefreshTopRatedMovie;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,7 @@ public class TopRatedMovieScreen extends Screen {
             protected void onResponseSuccess(TopRatedMovieResponse topRatedMovieResponse) {
                 DLog.d(tag, "onResponseSuccess " + topRatedMovieResponse);
                 // Adapter
-                List<ResultTopRatedMovie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
+                List<Movie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
                 movieTopRatedViewAdapter = new ListMovieTopRatedViewAdapter(TopRatedMovieScreen.this, topRatedMovies);
                 movieTopRatedList.setAdapter(movieTopRatedViewAdapter);
             }

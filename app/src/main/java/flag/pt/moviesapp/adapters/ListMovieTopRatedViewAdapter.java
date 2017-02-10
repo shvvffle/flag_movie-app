@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.http.entities.ResultTopRatedMovie;
+import flag.pt.moviesapp.http.entities.Movie;
 import flag.pt.moviesapp.screens.DetailMovieScreen;
 
 
@@ -20,11 +20,11 @@ import flag.pt.moviesapp.screens.DetailMovieScreen;
  * Created by Marina on 26/01/2017.
  */
 
-public class ListMovieTopRatedViewAdapter extends ArrayAdapter<ResultTopRatedMovie> {
+public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
 
     private static final String TAG = ListMovieTopRatedViewAdapter.class.getSimpleName();
 
-    public ListMovieTopRatedViewAdapter(Context context, List<ResultTopRatedMovie> topRatedMovies) {
+    public ListMovieTopRatedViewAdapter(Context context, List<Movie> topRatedMovies) {
         super(context, 0, topRatedMovies);
     }
 
@@ -33,7 +33,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<ResultTopRatedMov
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         final TopRatedMovieHolder holder;
-        final ResultTopRatedMovie topRatedMovies = getItem(position);
+        final Movie topRatedMovies = getItem(position);
 
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movie_item, null);
@@ -46,13 +46,13 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<ResultTopRatedMov
         }
 
         holder.movieTopRatedItem.setText(topRatedMovies.getTitle());
-        holder.movieTopRatedItem.setText(String.valueOf(topRatedMovies.getVoteAverage()));
+        holder.movieTopRatedItemRating.setText(String.valueOf(topRatedMovies.getVoteAverage()));
         holder.movieTopRatedItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class);
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, topRatedMovies);
-                getContext().startActivity(movieDetailIntent);
+                Intent movieTopRatedIntent = new Intent(getContext(), DetailMovieScreen.class);
+                movieTopRatedIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, topRatedMovies);
+                getContext().startActivity(movieTopRatedIntent);
             }
         });
         return v;
