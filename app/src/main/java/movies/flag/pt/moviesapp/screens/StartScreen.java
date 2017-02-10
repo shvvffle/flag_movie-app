@@ -23,6 +23,7 @@ public class StartScreen extends Screen {
     private Button getLatestMoviesButton;
     private Button getPopularTvShowButton;
     private Button getRandomMovieButton;
+    private Button getTopRatedMovieButton;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,8 @@ public class StartScreen extends Screen {
         searchBarInput = (EditText) findViewById(R.id.all_screens_search_bar_input);
         getLatestMoviesButton = (Button) findViewById(R.id.start_screen_latest_movie_screen_button);
         getPopularTvShowButton = (Button) findViewById(R.id.start_screen_popular_tv_show_screen_button);
-        getRandomMovieButton = (Button) findViewById(R.id.start_screen_random_movie_button);
+        getRandomMovieButton = (Button) findViewById(R.id.start_screen_random_movie_screen_button);
+        getTopRatedMovieButton = (Button) findViewById(R.id.start_screen_top_rated_movie_screen_button);
 
     }
 
@@ -69,6 +71,12 @@ public class StartScreen extends Screen {
             @Override
             public void onClick(View v) {
                 startActivity(RandomMovieScreen.class);
+            }
+        });
+        getTopRatedMovieButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(TopRatedMovieScreen.class);
             }
         });
     }
