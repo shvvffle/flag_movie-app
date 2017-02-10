@@ -75,6 +75,7 @@ public class LatestMovieScreen extends Screen {
                 List<Movie> movies = moviesResponse.getMovies();
                 movieViewAdapter = new ListMovieViewAdapter(LatestMovieScreen.this, movies);
                 movieList.setAdapter(movieViewAdapter);
+
             }
 
             @Override

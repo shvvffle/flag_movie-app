@@ -12,7 +12,7 @@
 <!-- Movie Title -->
         <TextView
             android:id="@+id/detail_movie_screen_title"
-            style="@style/movieTitle"
+            style="@style/defaultTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp" />
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/detail_movie_screen_overview"
-            style="@style/movieDescription"
+            style="@style/defaultDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/detail_movie_screen_cover"
