@@ -13,7 +13,7 @@ import java.util.List;
 
 import movies.flag.pt.moviesapp.R;
 import movies.flag.pt.moviesapp.http.entities.Movie;
-import movies.flag.pt.moviesapp.screens.SearchMovieScreen;
+import movies.flag.pt.moviesapp.screens.DetailMovieScreen;
 
 
 /**
@@ -36,27 +36,28 @@ public class ListMovieSearchViewAdapter extends ArrayAdapter<Movie> {
         final Movie movieSearchList = getItem( position );
 
         if (v == null) {
-            v = LayoutInflater.from( getContext() ).inflate( R.layout.latest_movie_item, null );
+            v = LayoutInflater.from( getContext() ).inflate( R.layout.search_movie_item, null );
             holder = new MovieSearchHolder();
-            holder.movieItem = (TextView) v.findViewById( R.id.latest_movie_item );
+            holder.searchMovieItem = (TextView) v.findViewById( R.id.search_movie_item );
             v.setTag( holder );
         } else {
             holder = (MovieSearchHolder) v.getTag();
         }
 
-        holder.movieItem.setText( movieSearchList.getTitle() );
-        holder.movieItem.setOnClickListener( new View.OnClickListener() {
+        holder.searchMovieItem.setText( movieSearchList.getTitle() );
+        holder.searchMovieItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent movieSearchDetailIntent = new Intent(getContext(), SearchMovieScreen.class );
-                getContext().startActivity(movieSearchDetailIntent);
+                Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class );
+                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, movieSearchList);
+                getContext().startActivity(movieDetailIntent);
             }
         } );
         return v;
     }
 
     private class MovieSearchHolder {
-        TextView movieItem;
+        TextView searchMovieItem;
     }
 
 
