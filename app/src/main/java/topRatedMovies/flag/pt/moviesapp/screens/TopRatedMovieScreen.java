@@ -9,9 +9,9 @@ import java.util.List;
 
 import topRatedMovies.flag.pt.moviesapp.R;
 import topRatedMovies.flag.pt.moviesapp.adapters.ListMovieTopRatedViewAdapter;
-import topRatedMovies.flag.pt.moviesapp.http.entities.Movie;
-import topRatedMovies.flag.pt.moviesapp.http.entities.MoviesResponse;
-import topRatedMovies.flag.pt.moviesapp.http.requests.GetNowPlayingMoviesAsyncTask;
+import topRatedMovies.flag.pt.moviesapp.http.entities.ResultTopRatedMovie;
+import topRatedMovies.flag.pt.moviesapp.http.entities.TopRatedMovieResponse;
+import topRatedMovies.flag.pt.moviesapp.http.requests.GetNowTopRatedMoviesAsyncTask;
 import topRatedMovies.flag.pt.moviesapp.utils.DLog;
 
 /**
@@ -66,14 +66,14 @@ public class TopRatedMovieScreen extends Screen {
 
     private void executeRequestTopRatedMovies() {
         // Request get now playing movies
-        new GetNowPlayingMoviesAsyncTask(this) {
+        new GetNowTopRatedMoviesAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(MoviesResponse moviesResponse) {
-                DLog.d(tag, "onResponseSuccess " + moviesResponse);
+            protected void onResponseSuccess(TopRatedMovieResponse topRatedMovieResponse) {
+                DLog.d(tag, "onResponseSuccess " + topRatedMovieResponse);
                 // Adapter
-                List<Movie> movies = moviesResponse.getMovies();
-                movieTopRatedViewAdapter = new ListMovieTopRatedViewAdapter(TopRatedMovieScreen.this, movies);
+                List<ResultTopRatedMovie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
+                movieTopRatedViewAdapter = new ListMovieTopRatedViewAdapter(TopRatedMovieScreen.this, topRatedMovies);
                 movieTopRatedList.setAdapter(movieTopRatedViewAdapter);
             }
 

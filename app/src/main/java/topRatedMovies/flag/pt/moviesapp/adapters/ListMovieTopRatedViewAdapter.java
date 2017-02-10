@@ -33,23 +33,25 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<ResultTopRatedMov
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         final TopRatedMovieHolder holder;
-        final ResultTopRatedMovie topRatedmovies = getItem(position);
+        final ResultTopRatedMovie topRatedMovies = getItem(position);
 
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movie_item, null);
             holder = new TopRatedMovieHolder();
             holder.movieTopRatedItem = (TextView) v.findViewById(R.id.top_rated_movie_item);
+            holder.movieTopRatedItemRating = (TextView) v.findViewById(R.id.top_rated_movie_item_rating);
             v.setTag(holder);
         } else {
             holder = (TopRatedMovieHolder) v.getTag();
         }
 
-        holder.movieTopRatedItem.setText(topRatedmovies.getTitle());
+        holder.movieTopRatedItem.setText(topRatedMovies.getTitle());
+        holder.movieTopRatedItem.setText(String.valueOf(topRatedMovies.getVoteAverage()));
         holder.movieTopRatedItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class);
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, topRatedmovies);
+                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, topRatedMovies);
                 getContext().startActivity(movieDetailIntent);
             }
         });
@@ -58,6 +60,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<ResultTopRatedMov
 
     private class TopRatedMovieHolder {
         TextView movieTopRatedItem;
+        TextView movieTopRatedItemRating;
     }
 
 
