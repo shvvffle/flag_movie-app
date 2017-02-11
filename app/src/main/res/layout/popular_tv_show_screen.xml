@@ -13,6 +13,7 @@
         <ListView
             android:id="@+id/popular_tv_show_screen_list_view"
             android:layout_width="wrap_content"
+            android:divider="@null"
             android:layout_height="wrap_content"></ListView>
 
     </RelativeLayout>

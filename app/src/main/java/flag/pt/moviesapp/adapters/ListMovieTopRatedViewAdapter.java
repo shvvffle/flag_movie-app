@@ -3,6 +3,7 @@ package flag.pt.moviesapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movie_item, null);
             holder = new TopRatedMovieHolder();
+            holder.movieTopRatedCardView = (CardView) v.findViewById(R.id.top_rated_movie_item_cardview);
             holder.movieTopRatedItem = (TextView) v.findViewById(R.id.top_rated_movie_item);
             holder.movieTopRatedItemRating = (TextView) v.findViewById(R.id.top_rated_movie_item_rating);
             v.setTag(holder);
@@ -47,7 +49,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
 
         holder.movieTopRatedItem.setText(topRatedMovies.getTitle());
         holder.movieTopRatedItemRating.setText(String.valueOf(topRatedMovies.getVoteAverage()));
-        holder.movieTopRatedItem.setOnClickListener(new View.OnClickListener() {
+        holder.movieTopRatedCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent movieTopRatedIntent = new Intent(getContext(), DetailMovieScreen.class);
@@ -61,6 +63,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
     private class TopRatedMovieHolder {
         TextView movieTopRatedItem;
         TextView movieTopRatedItemRating;
+        CardView movieTopRatedCardView;
     }
 
 
