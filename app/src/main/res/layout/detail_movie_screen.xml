@@ -37,7 +37,7 @@
                 <!-- Poster -->
 
                 <ImageView
-                    android:layout_marginTop="0dp"
+                    android:layout_margin="0dp"
                     android:id="@+id/detail_movie_screen_cover"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

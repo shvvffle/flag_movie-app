@@ -62,7 +62,7 @@ public class DetailMovieScreen extends Screen {
         final String movieTitle = movie.getTitle().toUpperCase();
         detailMovieTitle.setText(movieTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String moviePosterPath = "https://image.tmdb.org/t/p/w780" + movie.getPosterPath();
+        String moviePosterPath = "https://image.tmdb.org/t/p/1280" + movie.getPosterPath();
         task.execute(moviePosterPath);
         String movieOverview = movie.getOverview();
         detailMovieOverview.setText(movieOverview);

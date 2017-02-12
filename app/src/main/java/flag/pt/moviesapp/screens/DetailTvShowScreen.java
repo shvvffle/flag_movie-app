@@ -62,7 +62,7 @@ public class DetailTvShowScreen extends Screen {
         final String tvShowTitle = tvShow.getName().toUpperCase();
         detailTvShowTitle.setText(tvShowTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String tvShowPosterPath = "https://image.tmdb.org/t/p/w780" + tvShow.getPosterPath();
+        String tvShowPosterPath = "https://image.tmdb.org/t/p/w1280" + tvShow.getPosterPath();
         task.execute(tvShowPosterPath);
         String tvShowDate = tvShow.getFirstAirDate();
         detailTvShowDate.setText(tvShowDate);
