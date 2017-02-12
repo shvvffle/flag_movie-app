@@ -23,9 +23,9 @@
             <ImageView
                 android:id="@+id/top_rated_movie_item_placeholder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/movie_poster_placeholder" />
+                android:layout_height="70dp"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_rating" />
 
             <TextView
                 android:id="@+id/top_rated_movie_item"

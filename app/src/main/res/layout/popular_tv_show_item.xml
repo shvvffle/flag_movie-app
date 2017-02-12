@@ -23,9 +23,9 @@
             <ImageView
                 android:id="@+id/popular_tv_show_item_placeholder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/movie_poster_placeholder" />
+                android:layout_height="70dp"
+                android:background="@color/colorSecondary"
+                android:src="@drawable/ic_tv_show" />
 
             <TextView
                 android:id="@+id/popular_tv_show_item"

@@ -8,18 +8,16 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content"></android.support.v7.widget.Toolbar>
 
     <EditText
         android:id="@+id/all_screens_search_bar_input"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
-        android:textColorHint="#fff"
         android:hint="@string/search_bar"
-        android:textColor="#fff" />
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent" />
 
     <!-- Search button -->
     <ImageView

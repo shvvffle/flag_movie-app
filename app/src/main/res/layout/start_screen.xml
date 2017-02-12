@@ -2,17 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <!-- Banner -->
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+    android:orientation="horizontal">
 
     <!-- App Menu -->
 
@@ -23,41 +13,109 @@
 
     <!-- Get Latest Movies -->
 
-    <Button
-        android:id="@+id/start_screen_latest_movie_screen_button"
-        style="@style/buttonDefault"
-        android:layout_width="250dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/button_latest_movies" />
+    <LinearLayout
+        android:id="@+id/latest_movies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar_menu"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_movies" />
+
+        <Button
+            android:id="@+id/start_screen_latest_movie_screen_button"
+            style="@style/buttonDefault"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:borderlessButtonStyle="@style/Widget.AppCompat.Button.Borderless"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/button_latest_movies" />
+
+
+    </LinearLayout>
 
     <!-- Get Top Rated Movie -->
 
-    <Button
-        android:id="@+id/start_screen_top_rated_movie_screen_button"
-        style="@style/buttonDefault"
-        android:layout_below="@id/start_screen_latest_movie_screen_button"
-        android:layout_marginTop="20dp"
-        android:text="@string/button_top_rated_movies" />
+    <LinearLayout
+        android:id="@+id/top_rated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/latest_movies"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_rating" />
+
+        <Button
+            android:id="@+id/start_screen_top_rated_movie_screen_button"
+            style="@style/buttonDefault"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:elevation="0dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_top_rated_movies" />
+
+    </LinearLayout>
 
     <!-- Get Popular TV show -->
 
-    <Button
-        android:id="@+id/start_screen_popular_tv_show_screen_button"
-        style="@style/buttonDefault"
-        android:layout_below="@id/start_screen_top_rated_movie_screen_button"
-        android:layout_marginTop="20dp"
-        android:text="@string/button_popular_tv_show" />
+    <LinearLayout
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_rated"
+        android:background="@color/colorSecondary"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_tv_show" />
+
+
+        <Button
+            android:id="@+id/start_screen_popular_tv_show_screen_button"
+            style="@style/buttonDefault"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/button_popular_tv_show" />
+    </LinearLayout>
 
     <!-- Get Random Movie -->
 
-    <Button
-        android:id="@+id/start_screen_random_movie_screen_button"
-        style="@style/buttonDefault"
-        android:layout_below="@id/start_screen_popular_tv_show_screen_button"
-        android:layout_marginTop="20dp"
-        android:text="@string/button_random_movie" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_show"
+        android:background="@color/colorSecondaryLight"
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_play" />
+
+
+        <Button
+            android:id="@+id/start_screen_random_movie_screen_button"
+            style="@style/buttonDefault"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorSecondaryLight"
+            android:text="@string/button_random_movie" />
+    </LinearLayout>
 
 
 </RelativeLayout>
