@@ -4,27 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/search_movie_screen_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:id="@+id/search_movie_screen_detail"
+                style="@style/defaultTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="0dp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="#fff" />
+        </LinearLayout>
+
 
         <ListView
             android:id="@+id/search_movie__screen_list"
             android:layout_width="wrap_content"
-            android:divider="@null"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/search_movie_screen_detail"
-            android:layout_marginTop="20dp"></ListView>
+            android:layout_marginTop="100dp"
+            android:divider="@null"></ListView>
 
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
