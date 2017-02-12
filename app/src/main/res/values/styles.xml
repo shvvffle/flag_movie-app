@@ -9,16 +9,39 @@
     </style>
 
     <style name="defaultTitle">
-        <item name="android:textSize">25sp</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textIsSelectable">true</item>
-        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="defaultSubTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
     </style>
 
     <style name="defaultDescription">
         <item name="android:textSize">15sp</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
     </style>
+
+    <style name="defaultDescriptionDetail">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
 
     <style name="defaultCardView">
         <item name="android:layout_width">250dp</item>

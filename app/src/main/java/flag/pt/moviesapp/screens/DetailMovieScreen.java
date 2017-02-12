@@ -28,6 +28,7 @@ public class DetailMovieScreen extends Screen {
     private ImageView detailMoviePoster;
     private ImageView shareButton;
     private ProgressBar loaderView;
+    private TextView detailMovieDate;
 
 
     public static final String MOVIE_DETAILS = "MovieDetails";
@@ -49,6 +50,7 @@ public class DetailMovieScreen extends Screen {
         detailMovieTitle = (TextView) findViewById(R.id.detail_movie_screen_title);
         detailMovieOverview = (TextView) findViewById(R.id.detail_movie_screen_overview);
         detailMovieVote = (TextView) findViewById(R.id.detail_movie_screen_vote);
+        detailMovieDate = (TextView) findViewById(R.id.detail_movie_screen_date);
         shareButton = (ImageView) findViewById(R.id.detail_movie_screen_share_icon);
         loaderView = (ProgressBar) findViewById(R.id.detail_movie_screen_loader);
 
@@ -60,13 +62,14 @@ public class DetailMovieScreen extends Screen {
         final String movieTitle = movie.getTitle();
         detailMovieTitle.setText(movieTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String moviePosterPath = "https://image.tmdb.org/t/p/w500" + movie.getPosterPath();
+        String moviePosterPath = "https://image.tmdb.org/t/p/w600" + movie.getPosterPath();
         task.execute(moviePosterPath);
         String movieOverview = movie.getOverview();
         detailMovieOverview.setText(movieOverview);
         final double movieVote = movie.getVoteAverage();
         String movieVoteString = getResources().getString(R.string.movie_vote);
         detailMovieVote.setText(movieVoteString + " " +  (String.valueOf(movieVote)));
+        detailMovieDate.setText(movie.getReleaseDate());
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override

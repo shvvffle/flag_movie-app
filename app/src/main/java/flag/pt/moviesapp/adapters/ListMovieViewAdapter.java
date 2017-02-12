@@ -25,11 +25,10 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
 
     private static final String TAG = ListMovieViewAdapter.class.getSimpleName();
 
+
     public ListMovieViewAdapter(Context context, List<Movie> movies) {
         super(context, 0, movies);
     }
-
-
 
 
     @Override
@@ -37,6 +36,8 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
         View v = convertView;
         final MovieHolder holder;
         final Movie movie = getItem(position);
+        String movieReleaseDate = getContext().getResources().getString(R.string.release_date);
+
 
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.latest_movie_item, null);
@@ -51,7 +52,7 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
 
 
         holder.movieItem.setText(movie.getTitle());
-        holder.movieItemReleaseDate.setText(movie.getReleaseDate());
+        holder.movieItemReleaseDate.setText(movieReleaseDate + " " + movie.getReleaseDate());
         holder.movieCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,5 +69,6 @@ public class ListMovieViewAdapter extends ArrayAdapter<Movie> {
         TextView movieItemReleaseDate;
         CardView movieCardView;
     }
+
 
 }

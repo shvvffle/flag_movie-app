@@ -1,78 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/detail_movie_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/colorAccent">
 
-<!-- Movie Title -->
-        <TextView
-            android:id="@+id/detail_movie_screen_title"
-            style="@style/defaultTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
-
-        <!-- Loader for Poster -->
-
-        <ProgressBar
-            android:id="@+id/detail_movie_screen_loader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detail_movie_screen_title"
-            android:layout_centerHorizontal="true"
-            android:visibility="invisible" />
-
-        <!-- Poster -->
-
-        <ImageView
-            android:id="@+id/detail_movie_screen_cover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detail_movie_screen_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
-
-        <!-- Movie overview -->
-
-        <TextView
-            android:id="@+id/detail_movie_screen_overview"
-            style="@style/defaultDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detail_movie_screen_cover"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp" />
-
-        <!-- Movie score -->
-
-        <TextView
-            android:id="@+id/detail_movie_screen_vote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detail_movie_screen_overview"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+        <android.support.v7.widget.CardView
+            android:id="@+id/detail_movie_screen_cardview"
+            style="@style/defaultCardView"
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
-            android:textSize="14sp" />
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp">
+
+            <RelativeLayout
+                android:id="@+id/detail_movie_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Loader for Poster -->
+
+                <ProgressBar
+                    android:id="@+id/detail_movie_screen_loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="invisible" />
+
+                <!-- Poster -->
+
+                <ImageView
+                    android:id="@+id/detail_movie_screen_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
 
-        <!-- Share icon -->
+                <!-- Movie Title -->
+                <TextView
+                    android:id="@+id/detail_movie_screen_title"
+                    style="@style/defaultTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_movie_screen_cover" />
 
-        <include
-            android:id="@+id/detail_movie_screen_share_icon"
-            layout="@layout/share_icon_screen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detail_movie_screen_vote"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp" />
 
+                <!-- Details -->
+
+                <RelativeLayout
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/detail_movie_screen_title">
+
+                    <ImageView
+                        android:id="@+id/detail_movie_screen_date_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:src="@drawable/ic_calendar" />
+
+                    <TextView
+                        android:id="@+id/detail_movie_screen_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/detail_movie_screen_date_icon"
+                        android:textSize="12sp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/vote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/date"
+                    android:layout_marginLeft="8dp">
+
+                    <!-- Movie score -->
+
+                    <ImageView
+                        android:id="@+id/detail_movie_screen_vote_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_thumbs" />
+
+                    <TextView
+                        android:id="@+id/detail_movie_screen_vote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@id/detail_movie_screen_vote_icon"
+                        android:textSize="12sp" />
+
+
+                </RelativeLayout>
+
+
+                <!-- Movie overview -->
+
+                <TextView
+                    android:id="@+id/detail_movie_screen_overview_string"
+                    style="@style/defaultSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vote"
+                    android:text="@string/overview" />
+
+                <TextView
+                    android:id="@+id/detail_movie_screen_overview"
+                    style="@style/defaultDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_movie_screen_overview_string"
+                    android:layout_marginTop="5dp" />
+
+
+                <!-- Share icon -->
+
+                <include
+                    android:id="@+id/detail_movie_screen_share_icon"
+                    layout="@layout/share_icon_screen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/detail_movie_screen_overview"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </RelativeLayout>
+
+
 </ScrollView>

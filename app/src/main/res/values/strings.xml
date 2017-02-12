@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MoviesApp - Marina Marques</string>
-    <string name="search_bar">Search movie... </string>
+    <string name="search_bar">Search for a movie... </string>
     <string name="language">en</string>
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
@@ -11,6 +11,8 @@
     <string name="share_using">Share using</string>
     <string name="search_for">You searched for the following movie: </string>
     <string name="share_vote">Look it has this rating:</string>
-    <string name="movie_vote">Movie vote: </string>
-    <string name="tv_show_vote">TV show vote: </string>
+    <string name="overview">Overview</string>
+    <string name="movie_vote">Movie vote:</string>
+    <string name="tv_show_vote">TV show vote:</string>
+    <string name="release_date">Release date:</string>
 </resources>
