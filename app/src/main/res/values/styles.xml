@@ -9,7 +9,6 @@
     </style>
 
     <style name="defaultTitle">
-        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textIsSelectable">true</item>

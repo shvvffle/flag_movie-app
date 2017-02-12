@@ -59,7 +59,7 @@ public class DetailMovieScreen extends Screen {
     private void getInfoIntent() {
         Intent movieDetailIntent = getIntent();
         Movie movie = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
-        final String movieTitle = movie.getTitle();
+        final String movieTitle = movie.getTitle().toUpperCase();
         detailMovieTitle.setText(movieTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
         String moviePosterPath = "https://image.tmdb.org/t/p/w780" + movie.getPosterPath();

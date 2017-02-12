@@ -26,6 +26,7 @@ public class DetailTvShowScreen extends Screen {
     private TextView detailTvShowOverview;
     private TextView detailTvShowVote;
     private ImageView detailTvShowPoster;
+    private TextView detailTvShowDate;
     private ImageView shareButton;
     private ProgressBar loaderView;
 
@@ -49,6 +50,7 @@ public class DetailTvShowScreen extends Screen {
         detailTvShowTitle = (TextView) findViewById(R.id.detail_tv_show_screen_title);
         detailTvShowOverview = (TextView) findViewById(R.id.detail_tv_show_screen_overview);
         detailTvShowVote = (TextView) findViewById(R.id.detail_tv_show_screen_vote);
+        detailTvShowDate = (TextView) findViewById(R.id.detail_tv_show_screen_date);
         shareButton = (ImageView) findViewById(R.id.detail_tv_show_screen_share_icon);
         loaderView = (ProgressBar) findViewById(R.id.detail_tv_show_screen_loader);
 
@@ -57,13 +59,15 @@ public class DetailTvShowScreen extends Screen {
     private void getInfoIntent() {
         Intent TvShowDetailIntent = getIntent();
         ResultPopularTvShow tvShow = TvShowDetailIntent.getParcelableExtra(TV_SHOW_DETAILS);
-        final String tvShowTitle = tvShow.getName();
+        final String tvShowTitle = tvShow.getName().toUpperCase();
         detailTvShowTitle.setText(tvShowTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String tvShowPosterPath = "https://image.tmdb.org/t/p/w500" + tvShow.getPosterPath();
+        String tvShowPosterPath = "https://image.tmdb.org/t/p/w780" + tvShow.getPosterPath();
         task.execute(tvShowPosterPath);
-        String movieOverview = tvShow.getOverview();
-        detailTvShowOverview.setText(movieOverview);
+        String tvShowDate = tvShow.getFirstAirDate();
+        detailTvShowDate.setText(tvShowDate);
+        String tvShowOverview = tvShow.getOverview();
+        detailTvShowOverview.setText(tvShowOverview);
         final double tvShowVote = tvShow.getVoteAverage();
         String tvShowVoteString = getResources().getString(R.string.tv_show_vote);
         detailTvShowVote.setText(tvShowVoteString + " " + (String.valueOf(tvShowVote)));
