@@ -26,8 +26,8 @@
         <activity android:name=".screens.DetailMovieScreen"/>
         <activity android:name=".screens.SearchMovieScreen"/>
         <activity android:name=".screens.DetailTvShowScreen"/>
-        <activity android:name=".screens.RandomMovieScreen"/>
         <activity android:name=".screens.TopRatedMovieScreen"/>
+        <activity android:name=".screens.UpcomingMovieScreen"/>
 
         <!-- Database configurations -->
 

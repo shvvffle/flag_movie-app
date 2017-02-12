@@ -105,16 +105,16 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_play" />
+            android:src="@drawable/ic_upcoming" />
 
 
         <Button
-            android:id="@+id/start_screen_random_movie_screen_button"
+            android:id="@+id/start_screen_upcoming_movies_screen_button"
             style="@style/buttonDefault"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
             android:background="@color/colorSecondaryLight"
-            android:text="@string/button_random_movie" />
+            android:text="@string/button_upcoming_movies" />
     </LinearLayout>
 
 

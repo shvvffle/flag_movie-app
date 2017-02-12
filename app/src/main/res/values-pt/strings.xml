@@ -5,7 +5,7 @@
     <string name="language">pt</string>
     <string name="button_latest_movies">Obter últimos filmes</string>
     <string name="button_popular_tv_show">Obter séries mais populares</string>
-    <string name="button_random_movie">Que filme devia ver hoje?</string>
+    <string name="button_upcoming_movies">Obter próximas estreias</string>
     <string name="button_top_rated_movies">Obter filmes com melhor rating</string>
     <string name="share_body_movie">Devíamos ir ver este filme:</string>
     <string name="share_body_tv">Devíamos ver esta série:</string>
@@ -19,4 +19,5 @@
     <string name="movie_heading">Filmes em exibição</string>
     <string name="tv_show_heading">Séries mais populares</string>
     <string name="top_rated_movies_heading">Filmes com melhor rating</string>
+    <string name="upcoming_movies_heading">Próximas estreias</string>
 </resources>

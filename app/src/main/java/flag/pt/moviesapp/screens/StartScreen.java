@@ -22,7 +22,7 @@ public class StartScreen extends Screen {
     private EditText searchBarInput;
     private Button getLatestMoviesButton;
     private Button getPopularTvShowButton;
-    private Button getRandomMovieButton;
+    private Button getUpcomingMoviesButton;
     private Button getTopRatedMovieButton;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -40,13 +40,13 @@ public class StartScreen extends Screen {
         searchBarInput = (EditText) findViewById(R.id.all_screens_search_bar_input);
         getLatestMoviesButton = (Button) findViewById(R.id.start_screen_latest_movie_screen_button);
         getPopularTvShowButton = (Button) findViewById(R.id.start_screen_popular_tv_show_screen_button);
-        getRandomMovieButton = (Button) findViewById(R.id.start_screen_random_movie_screen_button);
+        getUpcomingMoviesButton = (Button) findViewById(R.id.start_screen_upcoming_movies_screen_button);
         getTopRatedMovieButton = (Button) findViewById(R.id.start_screen_top_rated_movie_screen_button);
 
     }
 
     private void addListeners() {
-        searchBarAction.setOnClickListener(new View.OnClickListener(){
+        searchBarAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
@@ -61,24 +61,25 @@ public class StartScreen extends Screen {
                 startActivity(LatestMovieScreen.class);
             }
         });
+        getTopRatedMovieButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(TopRatedMovieScreen.class);
+            }
+        });
         getPopularTvShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(PopularTvShowScreen.class);
             }
         });
-        getRandomMovieButton.setOnClickListener(new View.OnClickListener(){
+        getUpcomingMoviesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(RandomMovieScreen.class);
+                startActivity(UpcomingMovieScreen.class);
             }
         });
-        getTopRatedMovieButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(TopRatedMovieScreen.class);
-            }
-        });
+
     }
 
     private void startActivity(Class<?> activityClass) {

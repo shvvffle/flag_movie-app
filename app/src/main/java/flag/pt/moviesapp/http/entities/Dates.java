@@ -1,11 +1,14 @@
 
 package flag.pt.moviesapp.http.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Dates {
+public class Dates implements Parcelable {
 
     @SerializedName("maximum")
     @Expose
@@ -13,6 +16,23 @@ public class Dates {
     @SerializedName("minimum")
     @Expose
     private String minimum;
+
+    protected Dates(Parcel in) {
+        maximum = in.readString();
+        minimum = in.readString();
+    }
+
+    public static final Creator<Dates> CREATOR = new Creator<Dates>() {
+        @Override
+        public Dates createFromParcel(Parcel in) {
+            return new Dates(in);
+        }
+
+        @Override
+        public Dates[] newArray(int size) {
+            return new Dates[size];
+        }
+    };
 
     /**
      * 
@@ -50,4 +70,14 @@ public class Dates {
         this.minimum = minimum;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(maximum);
+        dest.writeString(minimum);
+    }
 }
