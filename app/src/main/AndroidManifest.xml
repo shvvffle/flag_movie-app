@@ -13,13 +13,14 @@
 
         <!-- Activities Declaration -->
 
-        <activity android:name=".screens.StartScreen">
+        <activity android:name=".screens.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
+        <activity android:name=".screens.StartScreen"/>
         <activity android:name=".screens.LatestMovieScreen"/>
         <activity android:name=".screens.PopularTvShowScreen"/>
         <activity android:name=".screens.DetailMovieScreen"/>
