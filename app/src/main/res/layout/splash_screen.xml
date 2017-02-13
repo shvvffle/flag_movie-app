@@ -27,12 +27,12 @@
         android:id="@+id/splash_screen_app_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/splash_screen_app_name"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
         android:text="@string/app_author"
         android:textAlignment="center"
         android:textColor="@color/colorIcons"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

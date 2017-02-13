@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MoviesApp</string>
-    <string name="app_author">Marina Marques</string>
+    <string name="app_author">Developed by Marina Marques</string>
     <string name="search_bar">Search for a movie... </string>
     <string name="language">en</string>
     <string name="button_latest_movies">Get latest movies</string>
