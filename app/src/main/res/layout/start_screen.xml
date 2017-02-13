@@ -35,7 +35,6 @@
                 style="@style/buttonDefault"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="30dp"
-                android:background="@color/colorPrimaryDark"
                 android:borderlessButtonStyle="@style/Widget.AppCompat.Button.Borderless"
                 android:text="@string/button_latest_movies" />
 
@@ -63,7 +62,6 @@
                 style="@style/buttonDefault"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="30dp"
-                android:background="@color/colorPrimary"
                 android:elevation="0dp"
                 android:text="@string/button_top_rated_movies" />
 
@@ -91,7 +89,6 @@
                 style="@style/buttonDefault"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="30dp"
-                android:background="@color/colorSecondary"
                 android:text="@string/button_popular_tv_show" />
         </LinearLayout>
 
@@ -116,7 +113,6 @@
                 style="@style/buttonDefault"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="30dp"
-                android:background="@color/colorSecondaryLight"
                 android:text="@string/button_upcoming_movies" />
         </LinearLayout>
 

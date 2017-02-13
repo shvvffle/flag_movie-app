@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.SearchView;
 
 import flag.pt.moviesapp.R;
 
@@ -18,8 +17,7 @@ import static flag.pt.moviesapp.screens.SearchMovieScreen.MOVIE_SEARCH;
 
 public class StartScreen extends Screen {
 
-    private ImageView searchBarAction;
-    private EditText searchBarInput;
+    private SearchView searchView;
     private Button getLatestMoviesButton;
     private Button getPopularTvShowButton;
     private Button getUpcomingMoviesButton;
@@ -35,9 +33,7 @@ public class StartScreen extends Screen {
     }
 
     private void findViews() {
-
-        searchBarAction = (ImageView) findViewById(R.id.all_screens_search_bar_button);
-        searchBarInput = (EditText) findViewById(R.id.all_screens_search_bar_input);
+        searchView = (SearchView) findViewById(R.id.search_view);
         getLatestMoviesButton = (Button) findViewById(R.id.start_screen_latest_movie_screen_button);
         getPopularTvShowButton = (Button) findViewById(R.id.start_screen_popular_tv_show_screen_button);
         getUpcomingMoviesButton = (Button) findViewById(R.id.start_screen_upcoming_movies_screen_button);
@@ -46,13 +42,19 @@ public class StartScreen extends Screen {
     }
 
     private void addListeners() {
-        searchBarAction.setOnClickListener(new View.OnClickListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onQueryTextSubmit(String query) {
                 Intent searchMovieIntent = new Intent(StartScreen.this, SearchMovieScreen.class);
-                String movieSearched = searchBarInput.getText().toString();
+                String movieSearched = searchView.getQuery().toString();
                 searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
                 startActivity(searchMovieIntent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
         getLatestMoviesButton.setOnClickListener(new View.OnClickListener() {

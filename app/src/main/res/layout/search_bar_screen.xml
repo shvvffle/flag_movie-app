@@ -6,21 +6,10 @@
 
     <!-- Search bar for movies -->
 
-    <EditText
-        android:id="@+id/all_screens_search_bar_input"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:hint="@string/search_bar"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent" />
-
-    <!-- Search button -->
-    <ImageView
-        android:id="@+id/all_screens_search_bar_button"
+    <SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_toRightOf="@+id/all_screens_search_bar_input"
-        android:clickable="true"
-        android:src="@drawable/movie_search" />
+        android:queryHint="@string/search_bar"></SearchView>
+
 </RelativeLayout>
