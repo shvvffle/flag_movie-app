@@ -2,8 +2,10 @@ package flag.pt.moviesapp.http.requests;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import flag.pt.moviesapp.R;
 import flag.pt.moviesapp.helpers.RequestsHelper;
 import flag.pt.moviesapp.utils.DLog;
@@ -18,12 +20,13 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
 
     private static final String API_KEY = "api_key";
     private static final String LANGUAGE = "language";
+    private static final String REGION = "region";
 
     private final String tag = getClass().getSimpleName();
 
     private Context context;
 
-    public ExecuteRequestAsyncTask(Context context){
+    public ExecuteRequestAsyncTask(Context context) {
         this.context = context;
     }
 
@@ -33,29 +36,29 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
     /**
      * Implementations must override this method and call
      * addQueryParam for each query arg
-     * */
+     */
     protected abstract void addQueryParams(StringBuilder sb);
 
     /**
      * In Java we cannot get the class type from a generic type,
      * so the implementations must provide it
-     * */
+     */
     protected abstract Class<ResponseEntity> getResponseEntityClass();
 
     /**
      * Called when server response finish with success
-     * */
+     */
     protected abstract void onResponseSuccess(ResponseEntity responseEntity);
 
     /**
      * Called when there is an error calling server (possible internet connection error)
-     * */
+     */
     protected abstract void onNetworkError();
 
     @Override
     protected final void onPostExecute(ServerResponse<ResponseEntity> serverResponse) {
         super.onPostExecute(serverResponse);
-        switch(serverResponse.getErrorType()){
+        switch (serverResponse.getErrorType()) {
             case ResponseErrors.NO_ERROR:
                 onResponseSuccess(serverResponse.getResponseEntity());
                 break;
@@ -71,7 +74,7 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
 
     /**
      * Documentation: https://developer.android.com/reference/java/net/HttpURLConnection.html
-     * */
+     */
     @Override
     protected ServerResponse<ResponseEntity> doInBackground(Void... voids) {
         URL url;
@@ -91,28 +94,29 @@ public abstract class ExecuteRequestAsyncTask<ResponseEntity> extends AsyncTask<
 
             DLog.v(tag, "Response: " + response);
 
-            if(response == null){
+            if (response == null) {
                 return new ServerResponse<>(null, ResponseErrors.NETWORK_ERROR);
             }
 
             ResponseEntity responseEntity = RequestsHelper.fromJson(response, getResponseEntityClass());
 
             return new ServerResponse<>(responseEntity, ResponseErrors.NO_ERROR);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             DLog.e(tag, "doInBackground() exception: " + e);
             return new ServerResponse<>(null, ResponseErrors.PARSE_ERROR);
         }
 
     }
 
-    private String buildUrl(){
+    private String buildUrl() {
         StringBuilder sb = new StringBuilder(context.getString(R.string.server_endpoint));
         sb.append(getPath());
         String apiKey = context.getString(R.string.server_api_key);
         addQueryParam(sb, API_KEY, apiKey);
-        String language = context.getString( R.string.language );
+        String language = context.getString(R.string.language);
         addQueryParam(sb, LANGUAGE, language);
+        String region = context.getString(R.string.region);
+        addQueryParam(sb, REGION, region);
         addQueryParams(sb);
         return sb.toString();
     }

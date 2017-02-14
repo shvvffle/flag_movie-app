@@ -3,6 +3,7 @@
     <string name="app_author">Developed by Marina Marques</string>
     <string name="search_bar">Search for a movie... </string>
     <string name="language">en</string>
+    <string name="region">us</string>
     <string name="button_latest_movies">Get latest movies</string>
     <string name="button_popular_tv_show">Get popular TV shows</string>
     <string name="button_upcoming_movies">Get upcoming movies</string>
