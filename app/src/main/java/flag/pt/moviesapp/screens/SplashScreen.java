@@ -42,7 +42,7 @@ public class SplashScreen extends Screen {
         logo.startAnimation(splashAnimation);
         appName.startAnimation(splashAnimation);
         appAuthor.startAnimation(splashAnimation);
-        final Intent goToMainScreen = new Intent(this, StartScreen.class);
+        final Intent goToMainScreen = new Intent(this, MenuScreen.class);
 
         Thread timer = new Thread() {
             public void run() {

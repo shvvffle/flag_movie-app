@@ -21,11 +21,11 @@ import flag.pt.moviesapp.screens.DetailMovieScreen;
  * Created by Marina on 26/01/2017.
  */
 
-public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
+public class ListTopRatedMoviesViewAdapter extends ArrayAdapter<Movie> {
 
-    private static final String TAG = ListMovieTopRatedViewAdapter.class.getSimpleName();
+    private static final String TAG = ListTopRatedMoviesViewAdapter.class.getSimpleName();
 
-    public ListMovieTopRatedViewAdapter(Context context, List<Movie> topRatedMovies) {
+    public ListTopRatedMoviesViewAdapter(Context context, List<Movie> topRatedMovies) {
         super(context, 0, topRatedMovies);
     }
 
@@ -37,7 +37,7 @@ public class ListMovieTopRatedViewAdapter extends ArrayAdapter<Movie> {
         final Movie topRatedMovies = getItem(position);
 
         if (v == null) {
-            v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movie_item, null);
+            v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movies_item, null);
             holder = new TopRatedMovieHolder();
             holder.movieTopRatedCardView = (CardView) v.findViewById(R.id.top_rated_movie_item_cardview);
             holder.movieTopRatedItem = (TextView) v.findViewById(R.id.top_rated_movie_item);

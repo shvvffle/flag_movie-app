@@ -8,21 +8,21 @@ import android.widget.ListView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListPopularTvShowAdapter;
-import flag.pt.moviesapp.http.entities.PopularTvShowResponse;
-import flag.pt.moviesapp.http.entities.ResultPopularTvShow;
-import flag.pt.moviesapp.http.requests.GetNowPopularTvShowAsyncTask;
+import flag.pt.moviesapp.adapters.ListPopularTvShowsAdapter;
+import flag.pt.moviesapp.http.entities.PopularTvShowsResponse;
+import flag.pt.moviesapp.http.entities.ResultsPopularTvShows;
+import flag.pt.moviesapp.http.requests.GetPopularTvShowsAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
 /**
  * Created by Marina on 25/01/2017.
  */
 
-public class PopularTvShowScreen extends Screen {
+public class PopularTvShowsScreen extends Screen {
 
     private static String REFRESH_TV_LOG;
     private ListView tvShowList;
-    private ListPopularTvShowAdapter tvShowViewAdapter;
+    private ListPopularTvShowsAdapter tvShowViewAdapter;
     private SwipeRefreshLayout swipeRefreshTvShow;
 
 
@@ -31,7 +31,7 @@ public class PopularTvShowScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestPopularTvShows();
 
-        setContentView(R.layout.popular_tv_show_screen);
+        setContentView(R.layout.popular_tv_shows_screen);
 
         findViews();
         addListeners();
@@ -63,14 +63,14 @@ public class PopularTvShowScreen extends Screen {
 
     private void executeRequestPopularTvShows() {
         // Request get popular tv shows
-        new GetNowPopularTvShowAsyncTask(this) {
+        new GetPopularTvShowsAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(PopularTvShowResponse popularTvShowResponse) {
+            protected void onResponseSuccess(PopularTvShowsResponse popularTvShowResponse) {
                 DLog.d(tag, "onResponseSuccess " + popularTvShowResponse);
                 // Adapter
-                List<ResultPopularTvShow> tvShows = popularTvShowResponse.getResults();
-                tvShowViewAdapter = new ListPopularTvShowAdapter(PopularTvShowScreen.this, tvShows);
+                List<ResultsPopularTvShows> tvShows = popularTvShowResponse.getResults();
+                tvShowViewAdapter = new ListPopularTvShowsAdapter(PopularTvShowsScreen.this, tvShows);
                 tvShowList.setAdapter(tvShowViewAdapter);
 
             }

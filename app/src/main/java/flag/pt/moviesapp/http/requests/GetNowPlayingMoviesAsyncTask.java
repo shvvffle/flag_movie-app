@@ -2,7 +2,7 @@ package flag.pt.moviesapp.http.requests;
 
 import android.content.Context;
 
-import flag.pt.moviesapp.http.entities.MoviesResponse;
+import flag.pt.moviesapp.http.entities.NowPlayingMoviesResponse;
 
 /**
  * Created by Ricardo Neves on 19/10/2016.
@@ -10,7 +10,7 @@ import flag.pt.moviesapp.http.entities.MoviesResponse;
  * Example for getting now playing movies
  */
 
-public abstract class GetNowPlayingMoviesAsyncTask extends ExecuteRequestAsyncTask<MoviesResponse> {
+public abstract class GetNowPlayingMoviesAsyncTask extends ExecuteRequestAsyncTask<NowPlayingMoviesResponse> {
 
     private static final String PATH = "/movie/now_playing";
 
@@ -30,7 +30,7 @@ public abstract class GetNowPlayingMoviesAsyncTask extends ExecuteRequestAsyncTa
     }
 
     @Override
-    protected Class<MoviesResponse> getResponseEntityClass() {
-        return MoviesResponse.class;
+    protected Class<NowPlayingMoviesResponse> getResponseEntityClass() {
+        return NowPlayingMoviesResponse.class;
     }
 }

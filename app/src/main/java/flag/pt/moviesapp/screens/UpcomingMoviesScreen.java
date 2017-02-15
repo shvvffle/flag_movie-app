@@ -18,7 +18,7 @@ import flag.pt.moviesapp.utils.DLog;
  * Created by Marina on 25/01/2017.
  */
 
-public class UpcomingMovieScreen extends Screen {
+public class UpcomingMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
@@ -31,7 +31,7 @@ public class UpcomingMovieScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestUpcomingMovies();
 
-        setContentView(R.layout.upcoming_movie_screen);
+        setContentView(R.layout.upcoming_movies_screen);
 
         findViews();
         addListeners();
@@ -72,7 +72,7 @@ public class UpcomingMovieScreen extends Screen {
                 DLog.d(tag, "onResponseSuccess " + upcomingMoviesResponse);
                 // Adapter
                 List<Movie> upcomingMovies = upcomingMoviesResponse.getResults();
-                upcomingMovieViewAdapter = new ListUpcomingMoviesViewAdapter(UpcomingMovieScreen.this, upcomingMovies);
+                upcomingMovieViewAdapter = new ListUpcomingMoviesViewAdapter(UpcomingMoviesScreen.this, upcomingMovies);
                 upcomingMovieList.setAdapter(upcomingMovieViewAdapter);
             }
 

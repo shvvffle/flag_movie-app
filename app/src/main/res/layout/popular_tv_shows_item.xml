@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/popular_tv_show_item_cardview"
+        android:id="@+id/popular_tv_shows_item_cardview"
         style="@style/defaultCardView"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp"
@@ -21,22 +21,22 @@
 
 
             <ImageView
-                android:id="@+id/popular_tv_show_item_placeholder"
+                android:id="@+id/popular_tv_shows_item_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="@color/colorSecondary"
                 android:src="@drawable/ic_tv_show" />
 
             <TextView
-                android:id="@+id/popular_tv_show_item"
+                android:id="@+id/popular_tv_shows_item"
                 style="@style/defaultTitleCardView"
-                android:layout_below="@+id/popular_tv_show_item_placeholder" />
+                android:layout_below="@+id/popular_tv_shows_item_placeholder" />
 
 
             <TextView
-                android:id="@+id/popular_tv_show_item_date"
+                android:id="@+id/popular_tv_shows_item_date"
                 style="@style/defaultDetailCardView"
-                android:layout_below="@id/popular_tv_show_item" />
+                android:layout_below="@id/popular_tv_shows_item" />
 
 
         </RelativeLayout>

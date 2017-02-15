@@ -8,22 +8,22 @@ import android.widget.ListView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListMovieTopRatedViewAdapter;
+import flag.pt.moviesapp.adapters.ListTopRatedMoviesViewAdapter;
 import flag.pt.moviesapp.http.entities.Movie;
-import flag.pt.moviesapp.http.entities.TopRatedMovieResponse;
-import flag.pt.moviesapp.http.requests.GetNowTopRatedMoviesAsyncTask;
+import flag.pt.moviesapp.http.entities.TopRatedMoviesResponse;
+import flag.pt.moviesapp.http.requests.GetTopRatedMoviesAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
 /**
  * Created by Marina on 25/01/2017.
  */
 
-public class TopRatedMovieScreen extends Screen {
+public class TopRatedMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
     private ListView movieTopRatedList;
-    private ListMovieTopRatedViewAdapter movieTopRatedViewAdapter;
+    private ListTopRatedMoviesViewAdapter movieTopRatedViewAdapter;
     private SwipeRefreshLayout swipeRefreshTopRatedMovie;
 
     @Override
@@ -31,7 +31,7 @@ public class TopRatedMovieScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestTopRatedMovies();
 
-        setContentView(R.layout.top_rated_movie_screen);
+        setContentView(R.layout.top_rated_movies_screen);
 
         findViews();
         addListeners();
@@ -65,14 +65,14 @@ public class TopRatedMovieScreen extends Screen {
 
     private void executeRequestTopRatedMovies() {
         // Request get now playing movies
-        new GetNowTopRatedMoviesAsyncTask(this) {
+        new GetTopRatedMoviesAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(TopRatedMovieResponse topRatedMovieResponse) {
+            protected void onResponseSuccess(TopRatedMoviesResponse topRatedMovieResponse) {
                 DLog.d(tag, "onResponseSuccess " + topRatedMovieResponse);
                 // Adapter
                 List<Movie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
-                movieTopRatedViewAdapter = new ListMovieTopRatedViewAdapter(TopRatedMovieScreen.this, topRatedMovies);
+                movieTopRatedViewAdapter = new ListTopRatedMoviesViewAdapter(TopRatedMoviesScreen.this, topRatedMovies);
                 movieTopRatedList.setAdapter(movieTopRatedViewAdapter);
             }
 

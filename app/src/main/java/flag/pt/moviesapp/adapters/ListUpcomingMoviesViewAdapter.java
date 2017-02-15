@@ -37,7 +37,7 @@ public class ListUpcomingMoviesViewAdapter extends ArrayAdapter<Movie> {
         final Movie upcomingMovies = getItem(position);
 
         if (v == null) {
-            v = LayoutInflater.from(getContext()).inflate(R.layout.upcoming_movie_item, null);
+            v = LayoutInflater.from(getContext()).inflate(R.layout.upcoming_movies_item, null);
             holder = new upcomingMoviesHolder();
             holder.upcomingMovieCardView = (CardView) v.findViewById(R.id.upcoming_movie_item_cardview);
             holder.upcomingMovieItem = (TextView) v.findViewById(R.id.upcoming_movie_item);

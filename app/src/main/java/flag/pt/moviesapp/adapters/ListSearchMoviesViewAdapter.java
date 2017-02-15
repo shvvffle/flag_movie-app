@@ -20,11 +20,11 @@ import flag.pt.moviesapp.screens.DetailMovieScreen;
  * Created by Marina on 26/01/2017.
  */
 
-public class ListMovieSearchViewAdapter extends ArrayAdapter<Movie> {
+public class ListSearchMoviesViewAdapter extends ArrayAdapter<Movie> {
 
-    private static final String TAG = ListMovieSearchViewAdapter.class.getSimpleName();
+    private static final String TAG = ListSearchMoviesViewAdapter.class.getSimpleName();
 
-    public ListMovieSearchViewAdapter(Context context, List<Movie> movies) {
+    public ListSearchMoviesViewAdapter(Context context, List<Movie> movies) {
         super( context, 0, movies );
     }
 
@@ -36,7 +36,7 @@ public class ListMovieSearchViewAdapter extends ArrayAdapter<Movie> {
         final Movie movieSearchList = getItem( position );
 
         if (v == null) {
-            v = LayoutInflater.from( getContext() ).inflate( R.layout.search_movie_item, null );
+            v = LayoutInflater.from( getContext() ).inflate( R.layout.search_movies_item, null );
             holder = new MovieSearchHolder();
             holder.searchMovieItem = (TextView) v.findViewById( R.id.search_movie_item );
             v.setTag( holder );

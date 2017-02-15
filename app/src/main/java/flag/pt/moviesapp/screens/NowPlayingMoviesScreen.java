@@ -8,9 +8,9 @@ import android.widget.ListView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListMovieViewAdapter;
+import flag.pt.moviesapp.adapters.ListNowPlayingMoviesViewAdapter;
 import flag.pt.moviesapp.http.entities.Movie;
-import flag.pt.moviesapp.http.entities.MoviesResponse;
+import flag.pt.moviesapp.http.entities.NowPlayingMoviesResponse;
 import flag.pt.moviesapp.http.requests.GetNowPlayingMoviesAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
@@ -18,12 +18,12 @@ import flag.pt.moviesapp.utils.DLog;
  * Created by Marina on 25/01/2017.
  */
 
-public class LatestMovieScreen extends Screen {
+public class NowPlayingMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
     private ListView movieList;
-    private ListMovieViewAdapter movieViewAdapter;
+    private ListNowPlayingMoviesViewAdapter movieViewAdapter;
     private SwipeRefreshLayout swipeRefreshMovie;
 
 
@@ -32,7 +32,7 @@ public class LatestMovieScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestLatestMovies();
 
-        setContentView(R.layout.latest_movie_screen);
+        setContentView(R.layout.now_playing_movies_screen);
 
         findViews();
         addListeners();
@@ -40,7 +40,7 @@ public class LatestMovieScreen extends Screen {
 
 
     private void findViews() {
-        movieList = (ListView) findViewById(R.id.latest_movie_screen_list_view);
+        movieList = (ListView) findViewById(R.id.now_playing_movies_screen_list_view);
         swipeRefreshMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshMovie);
     }
 
@@ -69,11 +69,11 @@ public class LatestMovieScreen extends Screen {
         new GetNowPlayingMoviesAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(MoviesResponse moviesResponse) {
-                DLog.d(tag, "onResponseSuccess " + moviesResponse);
+            protected void onResponseSuccess(NowPlayingMoviesResponse nowPlayingMoviesResponse) {
+                DLog.d(tag, "onResponseSuccess " + nowPlayingMoviesResponse);
                 // Adapter
-                List<Movie> movies = moviesResponse.getMovies();
-                movieViewAdapter = new ListMovieViewAdapter(LatestMovieScreen.this, movies);
+                List<Movie> movies = nowPlayingMoviesResponse.getMovies();
+                movieViewAdapter = new ListNowPlayingMoviesViewAdapter(NowPlayingMoviesScreen.this, movies);
                 movieList.setAdapter(movieViewAdapter);
 
             }

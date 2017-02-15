@@ -10,31 +10,31 @@ import android.widget.TextView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListMovieSearchViewAdapter;
+import flag.pt.moviesapp.adapters.ListSearchMoviesViewAdapter;
 import flag.pt.moviesapp.http.entities.Movie;
-import flag.pt.moviesapp.http.entities.MoviesResponse;
-import flag.pt.moviesapp.http.requests.GetSearchMovieAsyncTask;
+import flag.pt.moviesapp.http.entities.NowPlayingMoviesResponse;
+import flag.pt.moviesapp.http.requests.GetSearchMoviesAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
 /**
  * Created by Marina on 01/02/2017.
  */
 
-public class SearchMovieScreen extends Screen {
+public class SearchMoviesScreen extends Screen {
 
     public static final String MOVIE_SEARCH = "movieSearch";
     private static String REFRESH_SEARCH_LOG;
     private TextView movieResultSearch;
     private String movieSearchQuery;
     private ListView movieSearchList;
-    private ListMovieSearchViewAdapter movieSearchViewAdapter;
+    private ListSearchMoviesViewAdapter movieSearchViewAdapter;
     private SwipeRefreshLayout swipeRefreshSearchMovie;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_movie_screen);
+        setContentView(R.layout.search_movies_screen);
         Intent searchMovieIntent = getIntent();
         movieSearchQuery = searchMovieIntent.getStringExtra(MOVIE_SEARCH);
         executeRequestSearchMovie();
@@ -70,16 +70,16 @@ public class SearchMovieScreen extends Screen {
 
     private void executeRequestSearchMovie() {
         // Request search movies
-        new GetSearchMovieAsyncTask(this, movieSearchQuery) {
+        new GetSearchMoviesAsyncTask(this, movieSearchQuery) {
 
             @Override
-            protected void onResponseSuccess(MoviesResponse moviesResponse) {
-                DLog.d(tag, "onResponseSuccess " + moviesResponse);
+            protected void onResponseSuccess(NowPlayingMoviesResponse nowPlayingMoviesResponse) {
+                DLog.d(tag, "onResponseSuccess " + nowPlayingMoviesResponse);
                 // Adapter
                 String searchFor = getResources().getString(R.string.search_for);
                 movieResultSearch.setText(searchFor + " " + movieSearchQuery);
-                List<Movie> movies = moviesResponse.getMovies();
-                movieSearchViewAdapter = new ListMovieSearchViewAdapter(SearchMovieScreen.this, movies);
+                List<Movie> movies = nowPlayingMoviesResponse.getMovies();
+                movieSearchViewAdapter = new ListSearchMoviesViewAdapter(SearchMoviesScreen.this, movies);
                 movieSearchList.setAdapter(movieSearchViewAdapter);
             }
 

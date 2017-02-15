@@ -20,14 +20,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screens.StartScreen"/>
-        <activity android:name=".screens.LatestMovieScreen"/>
-        <activity android:name=".screens.PopularTvShowScreen"/>
+        <activity android:name=".screens.MenuScreen"/>
+        <activity android:name=".screens.NowPlayingMoviesScreen"/>
+        <activity android:name=".screens.PopularTvShowsScreen"/>
         <activity android:name=".screens.DetailMovieScreen"/>
-        <activity android:name=".screens.SearchMovieScreen"/>
+        <activity android:name=".screens.SearchMoviesScreen"/>
         <activity android:name=".screens.DetailTvShowScreen"/>
-        <activity android:name=".screens.TopRatedMovieScreen"/>
-        <activity android:name=".screens.UpcomingMovieScreen"/>
+        <activity android:name=".screens.TopRatedMoviesScreen"/>
+        <activity android:name=".screens.UpcomingMoviesScreen"/>
 
         <!-- Database configurations -->
 
