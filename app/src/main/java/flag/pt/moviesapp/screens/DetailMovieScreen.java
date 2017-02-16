@@ -58,18 +58,18 @@ public class DetailMovieScreen extends Screen {
 
     private void getInfoIntent() {
         Intent movieDetailIntent = getIntent();
-        Movie movie = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
-        final String movieTitle = movie.getTitle().toUpperCase();
+        Movie movieDetail = movieDetailIntent.getParcelableExtra(MOVIE_DETAILS);
+        final String movieTitle = movieDetail.getTitle().toUpperCase();
         detailMovieTitle.setText(movieTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String moviePosterPath = "https://image.tmdb.org/t/p/w780" + movie.getPosterPath();
+        String moviePosterPath = "https://image.tmdb.org/t/p/w780" + movieDetail.getPosterPath();
         task.execute(moviePosterPath);
-        String movieOverview = movie.getOverview();
+        String movieOverview = movieDetail.getOverview();
         detailMovieOverview.setText(movieOverview);
-        final double movieVote = movie.getVoteAverage();
+        final double movieVote = movieDetail.getVoteAverage();
         String movieVoteString = getResources().getString(R.string.movie_vote);
-        detailMovieVote.setText(movieVoteString + " " +  (String.valueOf(movieVote)));
-        detailMovieDate.setText(movie.getReleaseDate());
+        detailMovieVote.setText(movieVoteString + " " + (String.valueOf(movieVote)));
+        detailMovieDate.setText(movieDetail.getReleaseDate());
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override

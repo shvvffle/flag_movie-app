@@ -2,7 +2,6 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
@@ -22,8 +21,8 @@ public class TopRatedMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
-    private ListView movieTopRatedList;
-    private ListTopRatedMoviesViewAdapter movieTopRatedViewAdapter;
+    private ListView topRatedMoviesList;
+    private ListTopRatedMoviesViewAdapter topRatedViewAdapter;
     private SwipeRefreshLayout swipeRefreshTopRatedMovie;
 
     @Override
@@ -39,7 +38,7 @@ public class TopRatedMoviesScreen extends Screen {
 
 
     private void findViews() {
-        movieTopRatedList = (ListView) findViewById(R.id.top_rated_movie_screen_list_view);
+        topRatedMoviesList = (ListView) findViewById(R.id.top_rated_movies_screen_list_view);
         swipeRefreshTopRatedMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshTopRatedMovie);
     }
 
@@ -49,7 +48,7 @@ public class TopRatedMoviesScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshTopRatedMovie.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
@@ -64,7 +63,7 @@ public class TopRatedMoviesScreen extends Screen {
 
 
     private void executeRequestTopRatedMovies() {
-        // Request get now playing movies
+        // Request get top rated movies
         new GetTopRatedMoviesAsyncTask(this) {
 
             @Override
@@ -72,8 +71,8 @@ public class TopRatedMoviesScreen extends Screen {
                 DLog.d(tag, "onResponseSuccess " + topRatedMovieResponse);
                 // Adapter
                 List<Movie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
-                movieTopRatedViewAdapter = new ListTopRatedMoviesViewAdapter(TopRatedMoviesScreen.this, topRatedMovies);
-                movieTopRatedList.setAdapter(movieTopRatedViewAdapter);
+                topRatedViewAdapter = new ListTopRatedMoviesViewAdapter(TopRatedMoviesScreen.this, topRatedMovies);
+                topRatedMoviesList.setAdapter(topRatedViewAdapter);
             }
 
             @Override

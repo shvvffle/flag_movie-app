@@ -2,7 +2,6 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
@@ -21,8 +20,8 @@ import flag.pt.moviesapp.utils.DLog;
 public class PopularTvShowsScreen extends Screen {
 
     private static String REFRESH_TV_LOG;
-    private ListView tvShowList;
-    private ListPopularTvShowsAdapter tvShowViewAdapter;
+    private ListView popularTvShowsList;
+    private ListPopularTvShowsAdapter popularTvShowsViewAdapter;
     private SwipeRefreshLayout swipeRefreshTvShow;
 
 
@@ -38,7 +37,7 @@ public class PopularTvShowsScreen extends Screen {
     }
 
     private void findViews() {
-        tvShowList = (ListView) findViewById(R.id.popular_tv_show_screen_list_view);
+        popularTvShowsList = (ListView) findViewById(R.id.popular_tv_shows_screen_list_view);
         swipeRefreshTvShow = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshTV);
     }
 
@@ -48,7 +47,7 @@ public class PopularTvShowsScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_TV_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_TV_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshTvShow.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
@@ -70,8 +69,8 @@ public class PopularTvShowsScreen extends Screen {
                 DLog.d(tag, "onResponseSuccess " + popularTvShowResponse);
                 // Adapter
                 List<ResultsPopularTvShows> tvShows = popularTvShowResponse.getResults();
-                tvShowViewAdapter = new ListPopularTvShowsAdapter(PopularTvShowsScreen.this, tvShows);
-                tvShowList.setAdapter(tvShowViewAdapter);
+                popularTvShowsViewAdapter = new ListPopularTvShowsAdapter(PopularTvShowsScreen.this, tvShows);
+                popularTvShowsList.setAdapter(popularTvShowsViewAdapter);
 
             }
 

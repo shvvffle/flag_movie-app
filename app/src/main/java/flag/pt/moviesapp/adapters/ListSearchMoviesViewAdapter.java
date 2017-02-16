@@ -24,40 +24,40 @@ public class ListSearchMoviesViewAdapter extends ArrayAdapter<Movie> {
 
     private static final String TAG = ListSearchMoviesViewAdapter.class.getSimpleName();
 
-    public ListSearchMoviesViewAdapter(Context context, List<Movie> movies) {
-        super( context, 0, movies );
+    public ListSearchMoviesViewAdapter(Context context, List<Movie> searchMovies) {
+        super( context, 0, searchMovies );
     }
 
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        final MovieSearchHolder holder;
-        final Movie movieSearchList = getItem( position );
+        final searchMoviesHolder holder;
+        final Movie searchedMovie = getItem( position );
 
         if (v == null) {
             v = LayoutInflater.from( getContext() ).inflate( R.layout.search_movies_item, null );
-            holder = new MovieSearchHolder();
-            holder.searchMovieItem = (TextView) v.findViewById( R.id.search_movie_item );
+            holder = new searchMoviesHolder();
+            holder.searchMoviesItem = (TextView) v.findViewById( R.id.search_movies_item );
             v.setTag( holder );
         } else {
-            holder = (MovieSearchHolder) v.getTag();
+            holder = (searchMoviesHolder) v.getTag();
         }
 
-        holder.searchMovieItem.setText( movieSearchList.getTitle() );
-        holder.searchMovieItem.setOnClickListener( new View.OnClickListener() {
+        holder.searchMoviesItem.setText( searchedMovie.getTitle() );
+        holder.searchMoviesItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent movieDetailIntent = new Intent(getContext(), DetailMovieScreen.class );
-                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, movieSearchList);
+                movieDetailIntent.putExtra(DetailMovieScreen.MOVIE_DETAILS, searchedMovie);
                 getContext().startActivity(movieDetailIntent);
             }
         } );
         return v;
     }
 
-    private class MovieSearchHolder {
-        TextView searchMovieItem;
+    private class searchMoviesHolder {
+        TextView searchMoviesItem;
     }
 
 

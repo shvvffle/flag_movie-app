@@ -2,7 +2,6 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
@@ -22,15 +21,15 @@ public class NowPlayingMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
-    private ListView movieList;
-    private ListNowPlayingMoviesViewAdapter movieViewAdapter;
+    private ListView nowPlayingMoviesList;
+    private ListNowPlayingMoviesViewAdapter nowPlayingMoviesViewAdapter;
     private SwipeRefreshLayout swipeRefreshMovie;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        executeRequestLatestMovies();
+        executeRequestNowPlayingMovies();
 
         setContentView(R.layout.now_playing_movies_screen);
 
@@ -40,7 +39,7 @@ public class NowPlayingMoviesScreen extends Screen {
 
 
     private void findViews() {
-        movieList = (ListView) findViewById(R.id.now_playing_movies_screen_list_view);
+        nowPlayingMoviesList = (ListView) findViewById(R.id.now_playing_movies_screen_list_view);
         swipeRefreshMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshMovie);
     }
 
@@ -50,11 +49,11 @@ public class NowPlayingMoviesScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshMovie.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
-                        executeRequestLatestMovies();
+                        executeRequestNowPlayingMovies();
                         swipeRefreshMovie.setRefreshing(false);
                     }
                 }
@@ -64,7 +63,7 @@ public class NowPlayingMoviesScreen extends Screen {
     }
 
 
-    private void executeRequestLatestMovies() {
+    private void executeRequestNowPlayingMovies() {
         // Request get now playing movies
         new GetNowPlayingMoviesAsyncTask(this) {
 
@@ -72,9 +71,9 @@ public class NowPlayingMoviesScreen extends Screen {
             protected void onResponseSuccess(NowPlayingMoviesResponse nowPlayingMoviesResponse) {
                 DLog.d(tag, "onResponseSuccess " + nowPlayingMoviesResponse);
                 // Adapter
-                List<Movie> movies = nowPlayingMoviesResponse.getMovies();
-                movieViewAdapter = new ListNowPlayingMoviesViewAdapter(NowPlayingMoviesScreen.this, movies);
-                movieList.setAdapter(movieViewAdapter);
+                List<Movie> nowPlayingMovies = nowPlayingMoviesResponse.getMovies();
+                nowPlayingMoviesViewAdapter = new ListNowPlayingMoviesViewAdapter(NowPlayingMoviesScreen.this, nowPlayingMovies);
+                nowPlayingMoviesList.setAdapter(nowPlayingMoviesViewAdapter);
 
             }
 

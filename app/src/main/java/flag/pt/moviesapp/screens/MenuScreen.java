@@ -33,6 +33,7 @@ public class MenuScreen extends Screen {
     }
 
     private void findViews() {
+
         searchView = (SearchView) findViewById(R.id.search_view);
         getLatestMoviesButton = (Button) findViewById(R.id.menu_screen_now_playing_movies_screen_button);
         getPopularTvShowButton = (Button) findViewById(R.id.menu_screen_popular_tv_shows_screen_button);

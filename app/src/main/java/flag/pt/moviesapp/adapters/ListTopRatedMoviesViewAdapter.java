@@ -33,23 +33,23 @@ public class ListTopRatedMoviesViewAdapter extends ArrayAdapter<Movie> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        final TopRatedMovieHolder holder;
+        final topRatedMoviesHolder holder;
         final Movie topRatedMovies = getItem(position);
 
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.top_rated_movies_item, null);
-            holder = new TopRatedMovieHolder();
-            holder.movieTopRatedCardView = (CardView) v.findViewById(R.id.top_rated_movie_item_cardview);
-            holder.movieTopRatedItem = (TextView) v.findViewById(R.id.top_rated_movie_item);
-            holder.movieTopRatedItemRating = (TextView) v.findViewById(R.id.top_rated_movie_item_rating);
+            holder = new topRatedMoviesHolder();
+            holder.topRatedMoviesCardView = (CardView) v.findViewById(R.id.top_rated_movie_item_cardview);
+            holder.topRatedMoviesItem = (TextView) v.findViewById(R.id.top_rated_movies_item);
+            holder.topRatedMoviesItemRating = (TextView) v.findViewById(R.id.top_rated_movies_item_rating);
             v.setTag(holder);
         } else {
-            holder = (TopRatedMovieHolder) v.getTag();
+            holder = (topRatedMoviesHolder) v.getTag();
         }
 
-        holder.movieTopRatedItem.setText(topRatedMovies.getTitle());
-        holder.movieTopRatedItemRating.setText(String.valueOf(topRatedMovies.getVoteAverage()));
-        holder.movieTopRatedCardView.setOnClickListener(new View.OnClickListener() {
+        holder.topRatedMoviesItem.setText(topRatedMovies.getTitle());
+        holder.topRatedMoviesItemRating.setText(String.valueOf(topRatedMovies.getVoteAverage()));
+        holder.topRatedMoviesCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent movieTopRatedIntent = new Intent(getContext(), DetailMovieScreen.class);
@@ -60,10 +60,10 @@ public class ListTopRatedMoviesViewAdapter extends ArrayAdapter<Movie> {
         return v;
     }
 
-    private class TopRatedMovieHolder {
-        TextView movieTopRatedItem;
-        TextView movieTopRatedItemRating;
-        CardView movieTopRatedCardView;
+    private class topRatedMoviesHolder {
+        TextView topRatedMoviesItem;
+        TextView topRatedMoviesItemRating;
+        CardView topRatedMoviesCardView;
     }
 
 

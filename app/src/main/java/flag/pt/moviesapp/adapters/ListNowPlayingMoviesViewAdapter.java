@@ -34,20 +34,20 @@ public class ListNowPlayingMoviesViewAdapter extends ArrayAdapter<Movie> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        final MovieHolder holder;
+        final nowPlayingMoviesHolder holder;
         final Movie nowPlayingMovies = getItem(position);
         String movieReleaseDate = getContext().getResources().getString(R.string.release_date);
 
 
         if (v == null) {
             v = LayoutInflater.from(getContext()).inflate(R.layout.now_playing_movies_item, null);
-            holder = new MovieHolder();
+            holder = new nowPlayingMoviesHolder();
             holder.nowPlayingMoviesCardView = (CardView) v.findViewById(R.id.now_playing_movies_item_cardview);
             holder.nowPlayingMoviesItem = (TextView) v.findViewById(R.id.now_playing_movies_item);
             holder.nowPlayingMoviesItemReleaseDate = (TextView) v.findViewById(R.id.now_playing_movies_item_date);
             v.setTag(holder);
         } else {
-            holder = (MovieHolder) v.getTag();
+            holder = (nowPlayingMoviesHolder) v.getTag();
         }
 
 
@@ -64,7 +64,7 @@ public class ListNowPlayingMoviesViewAdapter extends ArrayAdapter<Movie> {
         return v;
     }
 
-    private class MovieHolder {
+    private class nowPlayingMoviesHolder {
         TextView nowPlayingMoviesItem;
         TextView nowPlayingMoviesItemReleaseDate;
         CardView nowPlayingMoviesCardView;

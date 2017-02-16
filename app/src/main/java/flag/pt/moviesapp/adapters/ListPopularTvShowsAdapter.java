@@ -50,7 +50,7 @@ public class ListPopularTvShowsAdapter extends ArrayAdapter<ResultsPopularTvShow
             @Override
             public void onClick(View v) {
                 Intent TvShowDetailIntent = new Intent(getContext(), DetailTvShowScreen.class );
-                TvShowDetailIntent.putExtra(DetailTvShowScreen.POPULAR_TV_SHOW_DETAILS, popularTvShows);
+                TvShowDetailIntent.putExtra(DetailTvShowScreen.POPULAR_TV_SHOWS_DETAILS, popularTvShows);
                 getContext().startActivity(TvShowDetailIntent);
             }
         });
