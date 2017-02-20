@@ -7,9 +7,9 @@ import android.widget.ListView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListPopularTvShowsAdapter;
+import flag.pt.moviesapp.adapters.ListPopularTvShowsViewAdapter;
 import flag.pt.moviesapp.http.entities.PopularTvShowsResponse;
-import flag.pt.moviesapp.http.entities.ResultsPopularTvShows;
+import flag.pt.moviesapp.http.entities.TvShow;
 import flag.pt.moviesapp.http.requests.GetPopularTvShowsAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
@@ -21,7 +21,7 @@ public class PopularTvShowsScreen extends Screen {
 
     private static String REFRESH_TV_LOG;
     private ListView popularTvShowsList;
-    private ListPopularTvShowsAdapter popularTvShowsViewAdapter;
+    private ListPopularTvShowsViewAdapter popularTvShowsViewAdapter;
     private SwipeRefreshLayout swipeRefreshTvShow;
 
 
@@ -68,8 +68,8 @@ public class PopularTvShowsScreen extends Screen {
             protected void onResponseSuccess(PopularTvShowsResponse popularTvShowResponse) {
                 DLog.d(tag, "onResponseSuccess " + popularTvShowResponse);
                 // Adapter
-                List<ResultsPopularTvShows> tvShows = popularTvShowResponse.getResults();
-                popularTvShowsViewAdapter = new ListPopularTvShowsAdapter(PopularTvShowsScreen.this, tvShows);
+                List<TvShow> tvShows = popularTvShowResponse.getResults();
+                popularTvShowsViewAdapter = new ListPopularTvShowsViewAdapter(PopularTvShowsScreen.this, tvShows);
                 popularTvShowsList.setAdapter(popularTvShowsViewAdapter);
 
             }

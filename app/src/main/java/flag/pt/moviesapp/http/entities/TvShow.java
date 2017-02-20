@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Marina on 25/01/2017.
  */
 
-public class ResultsPopularTvShows implements Parcelable {
+public class TvShow implements Parcelable {
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
@@ -181,10 +181,10 @@ public class ResultsPopularTvShows implements Parcelable {
         dest.writeString(this.originalName);
     }
 
-    public ResultsPopularTvShows() {
+    public TvShow() {
     }
 
-    protected ResultsPopularTvShows(Parcel in) {
+    protected TvShow(Parcel in) {
         this.posterPath = in.readString();
         this.popularity = (Double) in.readValue(Double.class.getClassLoader());
         this.id = (Integer) in.readValue(Integer.class.getClassLoader());
@@ -201,15 +201,15 @@ public class ResultsPopularTvShows implements Parcelable {
         this.originalName = in.readString();
     }
 
-    public static final Parcelable.Creator<ResultsPopularTvShows> CREATOR = new Parcelable.Creator<ResultsPopularTvShows>() {
+    public static final Parcelable.Creator<TvShow> CREATOR = new Parcelable.Creator<TvShow>() {
         @Override
-        public ResultsPopularTvShows createFromParcel(Parcel source) {
-            return new ResultsPopularTvShows(source);
+        public TvShow createFromParcel(Parcel source) {
+            return new TvShow(source);
         }
 
         @Override
-        public ResultsPopularTvShows[] newArray(int size) {
-            return new ResultsPopularTvShows[size];
+        public TvShow[] newArray(int size) {
+            return new TvShow[size];
         }
     };
 }

@@ -12,18 +12,18 @@ import android.widget.TextView;
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.http.entities.ResultsPopularTvShows;
+import flag.pt.moviesapp.http.entities.TvShow;
 import flag.pt.moviesapp.screens.DetailTvShowScreen;
 
 /**
  * Created by Marina on 29/01/2017.
  */
 
-public class ListPopularTvShowsAdapter extends ArrayAdapter<ResultsPopularTvShows> {
+public class ListPopularTvShowsViewAdapter extends ArrayAdapter<TvShow> {
 
-    private static final String TAG = ListPopularTvShowsAdapter.class.getSimpleName();
+    private static final String TAG = ListPopularTvShowsViewAdapter.class.getSimpleName();
 
-    public ListPopularTvShowsAdapter(Context context, List<ResultsPopularTvShows> popularTvShows) {
+    public ListPopularTvShowsViewAdapter(Context context, List<TvShow> popularTvShows) {
         super( context, 0, popularTvShows );
     }
 
@@ -31,7 +31,7 @@ public class ListPopularTvShowsAdapter extends ArrayAdapter<ResultsPopularTvShow
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         popularTvShowsHolder holder;
-        final ResultsPopularTvShows popularTvShows = getItem( position );
+        final TvShow popularTvShows = getItem( position );
 
         if (v == null) {
             v = LayoutInflater.from( getContext() ).inflate( R.layout.popular_tv_shows_item, null );

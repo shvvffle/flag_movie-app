@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.io.InputStream;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.http.entities.ResultsPopularTvShows;
+import flag.pt.moviesapp.http.entities.TvShow;
 
 /**
  * Created by Marina on 01/02/2017.
@@ -58,7 +58,7 @@ public class DetailTvShowScreen extends Screen {
 
     private void getInfoIntent() {
         Intent TvShowDetailIntent = getIntent();
-        ResultsPopularTvShows tvShowDetail = TvShowDetailIntent.getParcelableExtra(POPULAR_TV_SHOWS_DETAILS);
+        TvShow tvShowDetail = TvShowDetailIntent.getParcelableExtra(POPULAR_TV_SHOWS_DETAILS);
         final String tvShowTitle = tvShowDetail.getName().toUpperCase();
         detailTvShowTitle.setText(tvShowTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();

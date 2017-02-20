@@ -16,7 +16,7 @@ public class PopularTvShowsResponse {
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<ResultsPopularTvShows> results = null;
+    private List<TvShow> results = null;
     @SerializedName("total_results")
     @Expose
     private Integer totalResults;
@@ -32,11 +32,11 @@ public class PopularTvShowsResponse {
         this.page = page;
     }
 
-    public List<ResultsPopularTvShows> getResults() {
+    public List<TvShow> getResults() {
         return results;
     }
 
-    public void setResults(List<ResultsPopularTvShows> results) {
+    public void setResults(List<TvShow> results) {
         this.results = results;
     }
 
