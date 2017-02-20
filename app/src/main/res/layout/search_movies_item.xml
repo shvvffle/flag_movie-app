@@ -6,7 +6,7 @@
     <!-- Movie list -->
 
     <TextView
-        android:id="@+id/search_movie_item"
+        android:id="@+id/search_movies_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

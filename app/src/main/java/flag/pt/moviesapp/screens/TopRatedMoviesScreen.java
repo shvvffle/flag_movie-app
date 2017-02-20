@@ -2,28 +2,27 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListMovieTopRatedViewAdapter;
+import flag.pt.moviesapp.adapters.ListTopRatedMoviesViewAdapter;
 import flag.pt.moviesapp.http.entities.Movie;
-import flag.pt.moviesapp.http.entities.TopRatedMovieResponse;
-import flag.pt.moviesapp.http.requests.GetNowTopRatedMoviesAsyncTask;
+import flag.pt.moviesapp.http.entities.TopRatedMoviesResponse;
+import flag.pt.moviesapp.http.requests.GetTopRatedMoviesAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
 /**
  * Created by Marina on 25/01/2017.
  */
 
-public class TopRatedMovieScreen extends Screen {
+public class TopRatedMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
-    private ListView movieTopRatedList;
-    private ListMovieTopRatedViewAdapter movieTopRatedViewAdapter;
+    private ListView topRatedMoviesList;
+    private ListTopRatedMoviesViewAdapter topRatedViewAdapter;
     private SwipeRefreshLayout swipeRefreshTopRatedMovie;
 
     @Override
@@ -31,7 +30,7 @@ public class TopRatedMovieScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestTopRatedMovies();
 
-        setContentView(R.layout.top_rated_movie_screen);
+        setContentView(R.layout.top_rated_movies_screen);
 
         findViews();
         addListeners();
@@ -39,7 +38,7 @@ public class TopRatedMovieScreen extends Screen {
 
 
     private void findViews() {
-        movieTopRatedList = (ListView) findViewById(R.id.top_rated_movie_screen_list_view);
+        topRatedMoviesList = (ListView) findViewById(R.id.top_rated_movies_screen_list_view);
         swipeRefreshTopRatedMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshTopRatedMovie);
     }
 
@@ -49,7 +48,7 @@ public class TopRatedMovieScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshTopRatedMovie.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
@@ -64,16 +63,16 @@ public class TopRatedMovieScreen extends Screen {
 
 
     private void executeRequestTopRatedMovies() {
-        // Request get now playing movies
-        new GetNowTopRatedMoviesAsyncTask(this) {
+        // Request get top rated movies
+        new GetTopRatedMoviesAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(TopRatedMovieResponse topRatedMovieResponse) {
+            protected void onResponseSuccess(TopRatedMoviesResponse topRatedMovieResponse) {
                 DLog.d(tag, "onResponseSuccess " + topRatedMovieResponse);
                 // Adapter
                 List<Movie> topRatedMovies = topRatedMovieResponse.getResultTopRatedMovies();
-                movieTopRatedViewAdapter = new ListMovieTopRatedViewAdapter(TopRatedMovieScreen.this, topRatedMovies);
-                movieTopRatedList.setAdapter(movieTopRatedViewAdapter);
+                topRatedViewAdapter = new ListTopRatedMoviesViewAdapter(TopRatedMoviesScreen.this, topRatedMovies);
+                topRatedMoviesList.setAdapter(topRatedViewAdapter);
             }
 
             @Override

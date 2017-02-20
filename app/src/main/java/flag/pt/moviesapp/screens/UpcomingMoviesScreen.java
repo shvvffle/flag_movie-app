@@ -2,7 +2,6 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
@@ -18,12 +17,12 @@ import flag.pt.moviesapp.utils.DLog;
  * Created by Marina on 25/01/2017.
  */
 
-public class UpcomingMovieScreen extends Screen {
+public class UpcomingMoviesScreen extends Screen {
 
 
     private static String REFRESH_LOG;
-    private ListView upcomingMovieList;
-    private ListUpcomingMoviesViewAdapter upcomingMovieViewAdapter;
+    private ListView upcomingMoviesList;
+    private ListUpcomingMoviesViewAdapter upcomingMoviesViewAdapter;
     private SwipeRefreshLayout swipeRefreshUpcomingMovie;
 
     @Override
@@ -31,7 +30,7 @@ public class UpcomingMovieScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestUpcomingMovies();
 
-        setContentView(R.layout.upcoming_movie_screen);
+        setContentView(R.layout.upcoming_movies_screen);
 
         findViews();
         addListeners();
@@ -39,7 +38,7 @@ public class UpcomingMovieScreen extends Screen {
 
 
     private void findViews() {
-        upcomingMovieList= (ListView) findViewById(R.id.upcoming_movie_screen_list_view);
+        upcomingMoviesList = (ListView) findViewById(R.id.upcoming_movies_screen_list_view);
         swipeRefreshUpcomingMovie = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshUpcomingMovie);
     }
 
@@ -49,7 +48,7 @@ public class UpcomingMovieScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshUpcomingMovie.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
@@ -64,7 +63,7 @@ public class UpcomingMovieScreen extends Screen {
 
 
     private void executeRequestUpcomingMovies() {
-        // Request get now playing movies
+        // Request get upcoming movies
         new GetUpcomingMoviesAsyncTask(this) {
 
             @Override
@@ -72,8 +71,8 @@ public class UpcomingMovieScreen extends Screen {
                 DLog.d(tag, "onResponseSuccess " + upcomingMoviesResponse);
                 // Adapter
                 List<Movie> upcomingMovies = upcomingMoviesResponse.getResults();
-                upcomingMovieViewAdapter = new ListUpcomingMoviesViewAdapter(UpcomingMovieScreen.this, upcomingMovies);
-                upcomingMovieList.setAdapter(upcomingMovieViewAdapter);
+                upcomingMoviesViewAdapter = new ListUpcomingMoviesViewAdapter(UpcomingMoviesScreen.this, upcomingMovies);
+                upcomingMoviesList.setAdapter(upcomingMoviesViewAdapter);
             }
 
             @Override

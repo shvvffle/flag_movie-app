@@ -37,19 +37,19 @@ public class ListUpcomingMoviesViewAdapter extends ArrayAdapter<Movie> {
         final Movie upcomingMovies = getItem(position);
 
         if (v == null) {
-            v = LayoutInflater.from(getContext()).inflate(R.layout.upcoming_movie_item, null);
+            v = LayoutInflater.from(getContext()).inflate(R.layout.upcoming_movies_item, null);
             holder = new upcomingMoviesHolder();
-            holder.upcomingMovieCardView = (CardView) v.findViewById(R.id.upcoming_movie_item_cardview);
-            holder.upcomingMovieItem = (TextView) v.findViewById(R.id.upcoming_movie_item);
-            holder.upcomingMovieDate = (TextView) v.findViewById(R.id.upcoming_movie_item_date);
+            holder.upcomingMoviesCardView = (CardView) v.findViewById(R.id.upcoming_movies_item_cardview);
+            holder.upcomingMoviesItem = (TextView) v.findViewById(R.id.upcoming_movies_item);
+            holder.upcomingMoviesDate = (TextView) v.findViewById(R.id.upcoming_movies_item_date);
             v.setTag(holder);
         } else {
             holder = (upcomingMoviesHolder) v.getTag();
         }
 
-        holder.upcomingMovieItem.setText(upcomingMovies.getTitle());
-        holder.upcomingMovieDate.setText(upcomingMovies.getReleaseDate());
-        holder.upcomingMovieCardView.setOnClickListener(new View.OnClickListener() {
+        holder.upcomingMoviesItem.setText(upcomingMovies.getTitle());
+        holder.upcomingMoviesDate.setText(upcomingMovies.getReleaseDate());
+        holder.upcomingMoviesCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent upcomingMoviesIntent = new Intent(getContext(), DetailMovieScreen.class);
@@ -61,9 +61,9 @@ public class ListUpcomingMoviesViewAdapter extends ArrayAdapter<Movie> {
     }
 
     private class upcomingMoviesHolder {
-        TextView upcomingMovieItem;
-        TextView upcomingMovieDate;
-        CardView upcomingMovieCardView;
+        TextView upcomingMoviesItem;
+        TextView upcomingMoviesDate;
+        CardView upcomingMoviesCardView;
     }
 
 

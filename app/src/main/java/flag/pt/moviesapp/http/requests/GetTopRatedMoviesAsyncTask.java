@@ -2,18 +2,18 @@ package flag.pt.moviesapp.http.requests;
 
 import android.content.Context;
 
-import flag.pt.moviesapp.http.entities.TopRatedMovieResponse;
+import flag.pt.moviesapp.http.entities.TopRatedMoviesResponse;
 
 /**
  * Created by Marina on 25/01/2017.
  */
 
-public abstract class GetNowTopRatedMoviesAsyncTask extends ExecuteRequestAsyncTask<TopRatedMovieResponse> {
+public abstract class GetTopRatedMoviesAsyncTask extends ExecuteRequestAsyncTask<TopRatedMoviesResponse> {
 
     private static final String PATH = "/movie/top_rated";
 
 
-    public GetNowTopRatedMoviesAsyncTask(Context context) {
+    public GetTopRatedMoviesAsyncTask(Context context) {
         super(context);
     }
 
@@ -28,7 +28,7 @@ public abstract class GetNowTopRatedMoviesAsyncTask extends ExecuteRequestAsyncT
     }
 
     @Override
-    protected Class<TopRatedMovieResponse> getResponseEntityClass() {
-        return TopRatedMovieResponse.class;
+    protected Class<TopRatedMoviesResponse> getResponseEntityClass() {
+        return TopRatedMoviesResponse.class;
     }
 }

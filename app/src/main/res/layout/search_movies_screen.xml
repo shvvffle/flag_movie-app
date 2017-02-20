@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipeRefreshUpcomingMovie"
+    android:id="@+id/swipeRefreshSearchMovie"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,30 +10,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorAccent">
 
             <TextView
+                android:id="@+id/search_movies_screen_detail"
                 style="@style/defaultTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="0dp"
                 android:gravity="center"
-                android:text="@string/upcoming_movies_heading"
                 android:textAllCaps="true"
                 android:textColor="#fff" />
         </LinearLayout>
 
 
         <ListView
-            android:id="@+id/upcoming_movie_screen_list_view"
+            android:id="@+id/search_movies_screen_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="130dp"
             android:divider="@null"></ListView>
+
 
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

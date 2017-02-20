@@ -2,13 +2,13 @@ package flag.pt.moviesapp.http.requests;
 
 import android.content.Context;
 
-import flag.pt.moviesapp.http.entities.MoviesResponse;
+import flag.pt.moviesapp.http.entities.NowPlayingMoviesResponse;
 
 /**
  * Created by Marina on 01/02/2017.
  */
 
-public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<MoviesResponse> {
+public abstract class GetSearchMoviesAsyncTask extends ExecuteRequestAsyncTask<NowPlayingMoviesResponse> {
 
     private static final String PATH = "/search/movie";
     private static final String QUERY = "query";
@@ -16,7 +16,7 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
     private String movieSearched;
 
 
-    public GetSearchMovieAsyncTask(Context context, String movieSearched) {
+    public GetSearchMoviesAsyncTask(Context context, String movieSearched) {
         super(context);
         this.movieSearched = movieSearched;
     }
@@ -32,7 +32,7 @@ public abstract class GetSearchMovieAsyncTask extends ExecuteRequestAsyncTask<Mo
     }
 
     @Override
-    protected Class<MoviesResponse> getResponseEntityClass() {
-        return MoviesResponse.class;
+    protected Class<NowPlayingMoviesResponse> getResponseEntityClass() {
+        return NowPlayingMoviesResponse.class;
     }
 }

@@ -2,27 +2,26 @@ package flag.pt.moviesapp.screens;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.List;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.adapters.ListPopularTvShowAdapter;
-import flag.pt.moviesapp.http.entities.PopularTvShowResponse;
-import flag.pt.moviesapp.http.entities.ResultPopularTvShow;
-import flag.pt.moviesapp.http.requests.GetNowPopularTvShowAsyncTask;
+import flag.pt.moviesapp.adapters.ListPopularTvShowsViewAdapter;
+import flag.pt.moviesapp.http.entities.PopularTvShowsResponse;
+import flag.pt.moviesapp.http.entities.TvShow;
+import flag.pt.moviesapp.http.requests.GetPopularTvShowsAsyncTask;
 import flag.pt.moviesapp.utils.DLog;
 
 /**
  * Created by Marina on 25/01/2017.
  */
 
-public class PopularTvShowScreen extends Screen {
+public class PopularTvShowsScreen extends Screen {
 
     private static String REFRESH_TV_LOG;
-    private ListView tvShowList;
-    private ListPopularTvShowAdapter tvShowViewAdapter;
+    private ListView popularTvShowsList;
+    private ListPopularTvShowsViewAdapter popularTvShowsViewAdapter;
     private SwipeRefreshLayout swipeRefreshTvShow;
 
 
@@ -31,14 +30,14 @@ public class PopularTvShowScreen extends Screen {
         super.onCreate(savedInstanceState);
         executeRequestPopularTvShows();
 
-        setContentView(R.layout.popular_tv_show_screen);
+        setContentView(R.layout.popular_tv_shows_screen);
 
         findViews();
         addListeners();
     }
 
     private void findViews() {
-        tvShowList = (ListView) findViewById(R.id.popular_tv_show_screen_list_view);
+        popularTvShowsList = (ListView) findViewById(R.id.popular_tv_shows_screen_list_view);
         swipeRefreshTvShow = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshTV);
     }
 
@@ -48,7 +47,7 @@ public class PopularTvShowScreen extends Screen {
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        Log.i(REFRESH_TV_LOG, "onRefresh called from SwipeRefreshLayout");
+                        DLog.d(REFRESH_TV_LOG, "onRefresh called from SwipeRefreshLayout");
                         swipeRefreshTvShow.setRefreshing(true);
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
@@ -63,15 +62,15 @@ public class PopularTvShowScreen extends Screen {
 
     private void executeRequestPopularTvShows() {
         // Request get popular tv shows
-        new GetNowPopularTvShowAsyncTask(this) {
+        new GetPopularTvShowsAsyncTask(this) {
 
             @Override
-            protected void onResponseSuccess(PopularTvShowResponse popularTvShowResponse) {
+            protected void onResponseSuccess(PopularTvShowsResponse popularTvShowResponse) {
                 DLog.d(tag, "onResponseSuccess " + popularTvShowResponse);
                 // Adapter
-                List<ResultPopularTvShow> tvShows = popularTvShowResponse.getResults();
-                tvShowViewAdapter = new ListPopularTvShowAdapter(PopularTvShowScreen.this, tvShows);
-                tvShowList.setAdapter(tvShowViewAdapter);
+                List<TvShow> tvShows = popularTvShowResponse.getResults();
+                popularTvShowsViewAdapter = new ListPopularTvShowsViewAdapter(PopularTvShowsScreen.this, tvShows);
+                popularTvShowsList.setAdapter(popularTvShowsViewAdapter);
 
             }
 

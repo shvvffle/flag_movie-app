@@ -21,22 +21,22 @@
 
 
             <ImageView
-                android:id="@+id/top_rated_movie_item_placeholder"
+                android:id="@+id/top_rated_movies_item_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/ic_rating" />
 
             <TextView
-                android:id="@+id/top_rated_movie_item"
+                android:id="@+id/top_rated_movies_item"
                 style="@style/defaultTitleCardView"
-                android:layout_below="@+id/top_rated_movie_item_placeholder" />
+                android:layout_below="@+id/top_rated_movies_item_placeholder" />
 
 
             <TextView
-                android:id="@+id/top_rated_movie_item_rating"
+                android:id="@+id/top_rated_movies_item_rating"
                 style="@style/defaultDetailCardView"
-                android:layout_below="@id/top_rated_movie_item"/>
+                android:layout_below="@id/top_rated_movies_item"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

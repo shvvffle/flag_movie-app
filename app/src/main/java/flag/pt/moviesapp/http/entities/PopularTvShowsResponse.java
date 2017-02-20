@@ -1,4 +1,3 @@
-
 package flag.pt.moviesapp.http.entities;
 
 import com.google.gson.annotations.Expose;
@@ -6,14 +5,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TopRatedMovieResponse {
+/**
+ * Created by Marina on 25/01/2017.
+ */
+
+public class PopularTvShowsResponse {
 
     @SerializedName("page")
     @Expose
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<Movie> resultTopRatedMovies = null;
+    private List<TvShow> results = null;
     @SerializedName("total_results")
     @Expose
     private Integer totalResults;
@@ -29,12 +32,12 @@ public class TopRatedMovieResponse {
         this.page = page;
     }
 
-    public List<Movie> getResultTopRatedMovies() {
-        return resultTopRatedMovies;
+    public List<TvShow> getResults() {
+        return results;
     }
 
-    public void setResultTopRatedMovies(List<Movie> resultTopRatedMovies) {
-        this.resultTopRatedMovies = resultTopRatedMovies;
+    public void setResults(List<TvShow> results) {
+        this.results = results;
     }
 
     public Integer getTotalResults() {
@@ -52,5 +55,4 @@ public class TopRatedMovieResponse {
     public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
-
 }

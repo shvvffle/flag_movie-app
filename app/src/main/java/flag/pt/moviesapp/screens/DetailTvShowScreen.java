@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.io.InputStream;
 
 import flag.pt.moviesapp.R;
-import flag.pt.moviesapp.http.entities.ResultPopularTvShow;
+import flag.pt.moviesapp.http.entities.TvShow;
 
 /**
  * Created by Marina on 01/02/2017.
@@ -31,7 +31,7 @@ public class DetailTvShowScreen extends Screen {
     private ProgressBar loaderView;
 
 
-    public static final String TV_SHOW_DETAILS = "TvShowDetails";
+    public static final String POPULAR_TV_SHOWS_DETAILS = "TvShowDetails";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +58,17 @@ public class DetailTvShowScreen extends Screen {
 
     private void getInfoIntent() {
         Intent TvShowDetailIntent = getIntent();
-        ResultPopularTvShow tvShow = TvShowDetailIntent.getParcelableExtra(TV_SHOW_DETAILS);
-        final String tvShowTitle = tvShow.getName().toUpperCase();
+        TvShow tvShowDetail = TvShowDetailIntent.getParcelableExtra(POPULAR_TV_SHOWS_DETAILS);
+        final String tvShowTitle = tvShowDetail.getName().toUpperCase();
         detailTvShowTitle.setText(tvShowTitle);
         DownloadPosterPathAsyncTask task = new DownloadPosterPathAsyncTask();
-        String tvShowPosterPath = "https://image.tmdb.org/t/p/w1280" + tvShow.getPosterPath();
+        String tvShowPosterPath = "https://image.tmdb.org/t/p/w1280" + tvShowDetail.getPosterPath();
         task.execute(tvShowPosterPath);
-        String tvShowDate = tvShow.getFirstAirDate();
+        String tvShowDate = tvShowDetail.getFirstAirDate();
         detailTvShowDate.setText(tvShowDate);
-        String tvShowOverview = tvShow.getOverview();
+        String tvShowOverview = tvShowDetail.getOverview();
         detailTvShowOverview.setText(tvShowOverview);
-        final double tvShowVote = tvShow.getVoteAverage();
+        final double tvShowVote = tvShowDetail.getVoteAverage();
         String tvShowVoteString = getResources().getString(R.string.tv_show_vote);
         detailTvShowVote.setText(tvShowVoteString + " " + (String.valueOf(tvShowVote)));
 
