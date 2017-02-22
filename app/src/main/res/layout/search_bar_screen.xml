@@ -7,9 +7,11 @@
     <!-- Search bar for movies -->
 
     <SearchView
+        android:searchIcon="@drawable/movie_search"
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:queryHint="@string/search_bar"></SearchView>
+        android:queryHint="@string/search_bar">
+    </SearchView>
 
 </RelativeLayout>

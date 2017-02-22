@@ -3,7 +3,7 @@ package flag.pt.moviesapp.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import flag.pt.moviesapp.R;
@@ -18,10 +18,10 @@ import static flag.pt.moviesapp.screens.SearchMoviesScreen.MOVIE_SEARCH;
 public class MenuScreen extends Screen {
 
     private SearchView searchView;
-    private Button getLatestMoviesButton;
-    private Button getPopularTvShowButton;
-    private Button getUpcomingMoviesButton;
-    private Button getTopRatedMovieButton;
+    private LinearLayout getNowPlayingMovies;
+    private LinearLayout getPopularTvShows;
+    private LinearLayout getUpcomingMovies;
+    private LinearLayout getTopRatedMovies;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +35,20 @@ public class MenuScreen extends Screen {
     private void findViews() {
 
         searchView = (SearchView) findViewById(R.id.search_view);
-        getLatestMoviesButton = (Button) findViewById(R.id.menu_screen_now_playing_movies_screen_button);
-        getPopularTvShowButton = (Button) findViewById(R.id.menu_screen_popular_tv_shows_screen_button);
-        getUpcomingMoviesButton = (Button) findViewById(R.id.menu_screen_upcoming_movies_screen_button);
-        getTopRatedMovieButton = (Button) findViewById(R.id.menu_screen_top_rated_movies_screen_button);
+        getNowPlayingMovies = (LinearLayout) findViewById(R.id.menu_screen_linear_layout_now_playing_movies);
+        getPopularTvShows = (LinearLayout) findViewById(R.id.menu_screen_linear_layout_popular_tv_shows);
+        getUpcomingMovies = (LinearLayout) findViewById(R.id.menu_screen_linear_layout_upcoming_movies);
+        getTopRatedMovies = (LinearLayout) findViewById(R.id.menu_screen_linear_layout_top_rated_movies);
 
     }
 
     private void addListeners() {
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.setIconified(false);
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -50,7 +56,7 @@ public class MenuScreen extends Screen {
                 String movieSearched = searchView.getQuery().toString();
                 searchMovieIntent.putExtra(MOVIE_SEARCH, movieSearched);
                 startActivity(searchMovieIntent);
-                return false;
+                return true;
             }
 
             @Override
@@ -58,25 +64,25 @@ public class MenuScreen extends Screen {
                 return false;
             }
         });
-        getLatestMoviesButton.setOnClickListener(new View.OnClickListener() {
+        getNowPlayingMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(NowPlayingMoviesScreen.class);
             }
         });
-        getTopRatedMovieButton.setOnClickListener(new View.OnClickListener() {
+        getTopRatedMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(TopRatedMoviesScreen.class);
             }
         });
-        getPopularTvShowButton.setOnClickListener(new View.OnClickListener() {
+        getPopularTvShows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(PopularTvShowsScreen.class);
             }
         });
-        getUpcomingMoviesButton.setOnClickListener(new View.OnClickListener() {
+        getUpcomingMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(UpcomingMoviesScreen.class);
